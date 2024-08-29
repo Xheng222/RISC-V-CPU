@@ -21,13 +21,11 @@
 
 
 module PC_IROM;
-    reg clk = 1;
-    reg rst = 1;
+    reg clk;
+    reg rst;
     reg [31:0] npc;
     wire [31:0] pc;
     wire [31:0] instr;
-    
-
     
     PC pc_1(
         .clk(clk),
@@ -44,6 +42,10 @@ module PC_IROM;
     always #5 clk = ~clk;
     
     initial begin
+        clk = 1;
+        rst = 1;
+        npc = 0;
+        
         #500
         npc = 32'd0;
         
