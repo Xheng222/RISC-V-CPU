@@ -23,7 +23,7 @@ module ALU(
   input  [3:0] ALUop,
   input  [31:0] data1,
   input  [31:0] data2,
-  output reg [31:0] ALUoutput
+  output [31:0] ALUoutput
 );
 
 wire [31:0] ADD;   //¼Ó·¨²Ù×÷
@@ -56,20 +56,30 @@ assign SLT[0] = ($signed(data1) < $signed(data2)) ? 1 : 0;
 assign SLTU[31:1] = 31'b0;
 assign SLTU[0] = (data1 < data2) ? 1 : 0;
 
-always @(*) begin
-    case(ALUop)
-        4'b0000: ALUoutput = ADD;
-        4'b0011: ALUoutput = SUB;
-        4'b0100: ALUoutput = AND;
-        4'b0101: ALUoutput = OR;
-        4'b0110: ALUoutput = XOR;
-        4'b1000: ALUoutput = SLT;
-        4'b1001: ALUoutput = SLTU;
-        4'b1100: ALUoutput = SLL;
-        4'b1101: ALUoutput = SRL;
-        4'b1110: ALUoutput = SRA;
-        default: ALUoutput = data1; 
-    endcase
-end
+assign ALUoutput = (ALUop == 4'b0000) ? ADD : 
+                    (ALUop == 4'b0011) ? SUB : 
+                    (ALUop == 4'b0100) ? AND : 
+                    (ALUop == 4'b0101) ? OR : 
+                    (ALUop == 4'b0110) ? XOR : 
+                    (ALUop == 4'b1000) ? SLT : 
+                    (ALUop == 4'b1001) ? SLTU : 
+                    (ALUop == 4'b1100) ? SLL : 
+                    (ALUop == 4'b1101) ? SRL : 
+                    (ALUop == 4'b1110) ? SRA : data1;
+//always @(*) begin
+//    case(ALUop)
+//        4'b0000: ALUoutput = ADD;
+//        4'b0011: ALUoutput = SUB;
+//        4'b0100: ALUoutput = AND;
+//        4'b0101: ALUoutput = OR;
+//        4'b0110: ALUoutput = XOR;
+//        4'b1000: ALUoutput = SLT;
+//        4'b1001: ALUoutput = SLTU;
+//        4'b1100: ALUoutput = SLL;
+//        4'b1101: ALUoutput = SRL;
+//        4'b1110: ALUoutput = SRA;
+//        default: ALUoutput = data1; 
+//    endcase
+//end
 
 endmodule

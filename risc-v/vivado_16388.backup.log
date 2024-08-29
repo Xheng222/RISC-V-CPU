@@ -1,0 +1,916 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2700185 on Thu Oct 24 18:46:05 MDT 2019
+# IP Build 2699827 on Thu Oct 24 21:16:38 MDT 2019
+# Start of session at: Thu Aug 29 11:08:00 2024
+# Process ID: 16388
+# Current directory: G:/computer/RISC-V-CPU/risc-v
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5364 G:\computer\RISC-V-CPU\risc-v\risc-v.xpr
+# Log file: G:/computer/RISC-V-CPU/risc-v/vivado.log
+# Journal file: G:/computer/RISC-V-CPU/risc-v\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project G:/computer/RISC-V-CPU/risc-v/risc-v.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2019.2/data/ip'.
+open_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 904.344 ; gain = 219.289
+file mkdir G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new
+close [ open G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/ALU.v w ]
+add_files G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/ALU.v
+update_compile_order -fileset sources_1
+file mkdir G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/ALU_tb.v w ]
+add_files -fileset sim_1 G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/ALU_tb.v
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj ALU_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/ALU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/ALU_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot ALU_tb_behav xil_defaultlib.ALU_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot ALU_tb_behav xil_defaultlib.ALU_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.ALU_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot ALU_tb_behav
+
+****** Webtalk v2019.2 (64-bit)
+  **** SW Build 2700185 on Thu Oct 24 18:46:05 MDT 2019
+  **** IP Build 2699827 on Thu Oct 24 21:16:38 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim/xsim.dir/ALU_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Aug 29 13:33:20 2024...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 1001.355 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '8' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_tb_behav -key {Behavioral:sim_1:Functional:ALU_tb} -tclbatch {ALU_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source ALU_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+Testing ADD
+ADD: data1 =         10, data2 =          5, Result =         15
+Testing SUB
+SUB: data1 =         10, data2 =          5, Result =          5
+Testing AND
+AND: data1 =         10, data2 =          5, Result =          0
+Testing OR
+OR: data1 =         10, data2 =          5, Result =         15
+Testing XOR
+XOR: data1 =         10, data2 =          5, Result =         15
+Testing SLT (signed less than)
+SLT: data1 = 4294967286, data2 =          5, Result =          1
+Testing SLTU (unsigned less than)
+SLTU: data1 = 4294967295, data2 =          5, Result =          0
+Testing SLL (logical left shift)
+SLL: data1 =          2, data2 =          1, Result =          4
+Testing SRL (logical right shift)
+SRL: data1 =          8, data2 =          2, Result =          2
+Testing SRA (arithmetic right shift)
+SRA: data1 = 4294967288, data2 =          2, Result = 1073741822
+Test completed.
+$finish called at time : 100 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/ALU_tb.v" Line 96
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 1025.109 ; gain = 23.754
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj ALU_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/ALU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/ALU_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot ALU_tb_behav xil_defaultlib.ALU_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot ALU_tb_behav xil_defaultlib.ALU_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.ALU_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot ALU_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_tb_behav -key {Behavioral:sim_1:Functional:ALU_tb} -tclbatch {ALU_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source ALU_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+Testing ADD
+ADD: data1 = 4294967286, data2 =          5, Result = 4294967291
+Testing SUB
+SUB: data1 = 4294967286, data2 =          5, Result = 4294967281
+Testing AND
+AND: data1 = 4294967286, data2 =          5, Result =          4
+Testing OR
+OR: data1 = 4294967286, data2 =          5, Result = 4294967287
+Testing XOR
+XOR: data1 = 4294967286, data2 =          5, Result = 4294967283
+Testing SLT (signed less than)
+SLT: data1 = 4294967286, data2 =          5, Result =          1
+Testing SLTU (unsigned less than)
+SLTU: data1 = 4294967295, data2 =          5, Result =          0
+Testing SLL (logical left shift)
+SLL: data1 =          2, data2 =          1, Result =          4
+Testing SRL (logical right shift)
+SRL: data1 =          8, data2 =          2, Result =          2
+Testing SRA (arithmetic right shift)
+SRA: data1 = 4294967288, data2 =          2, Result = 1073741822
+Test completed.
+$finish called at time : 100 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/ALU_tb.v" Line 96
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj ALU_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/ALU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/ALU_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot ALU_tb_behav xil_defaultlib.ALU_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot ALU_tb_behav xil_defaultlib.ALU_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.ALU_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot ALU_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_tb_behav -key {Behavioral:sim_1:Functional:ALU_tb} -tclbatch {ALU_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source ALU_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+Testing ADD
+ADD: data1 = 4294967286, data2 =          5, Result = 4294967291
+Testing SUB
+SUB: data1 = 4294967286, data2 =          5, Result = 4294967281
+Testing AND
+AND: data1 = 4294967286, data2 =          5, Result =          4
+Testing OR
+OR: data1 = 4294967286, data2 =          5, Result = 4294967287
+Testing XOR
+XOR: data1 = 4294967286, data2 =          5, Result = 4294967283
+Testing SLT (signed less than)
+SLT: data1 = 4294967286, data2 =          5, Result =          1
+Testing SLTU (unsigned less than)
+SLTU: data1 = 4294967295, data2 =          5, Result =          0
+Testing SLL (logical left shift)
+SLL: data1 =          2, data2 =          1, Result =          4
+Testing SRL (logical right shift)
+SRL: data1 =          8, data2 =          2, Result =          2
+Testing SRA (arithmetic right shift)
+SRA: data1 = 4294967288, data2 =          2, Result = 1073741822
+Test completed.
+temp =  536870911
+$finish called at time : 100 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/ALU_tb.v" Line 99
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+run 10 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj ALU_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/ALU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/ALU_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot ALU_tb_behav xil_defaultlib.ALU_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot ALU_tb_behav xil_defaultlib.ALU_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.ALU_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot ALU_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_tb_behav -key {Behavioral:sim_1:Functional:ALU_tb} -tclbatch {ALU_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source ALU_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+Testing ADD
+ADD: data1 = 4294967286, data2 =          5, Result = 4294967291
+Testing SUB
+SUB: data1 = 4294967286, data2 =          5, Result = 4294967281
+Testing AND
+AND: data1 = 4294967286, data2 =          5, Result =          4
+Testing OR
+OR: data1 = 4294967286, data2 =          5, Result = 4294967287
+Testing XOR
+XOR: data1 = 4294967286, data2 =          5, Result = 4294967283
+Testing SLT (signed less than)
+SLT: data1 = 4294967286, data2 =          5, Result =          1
+Testing SLTU (unsigned less than)
+SLTU: data1 = 4294967295, data2 =          5, Result =          0
+Testing SLL (logical left shift)
+SLL: data1 =          2, data2 =          1, Result =          4
+Testing SRL (logical right shift)
+SRL: data1 =          8, data2 =          2, Result =          2
+Testing SRA (arithmetic right shift)
+SRA: data1 = 4294967288, data2 =          2, Result = 4294967294
+Test completed.
+temp =  536870911
+$finish called at time : 100 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/ALU_tb.v" Line 99
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+run 10 us
+close [ open G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IROM.v w ]
+add_files G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IROM.v
+close [ open G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/PC.v w ]
+add_files G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/PC.v
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v w ]
+add_files -fileset sim_1 G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v
+update_compile_order -fileset sim_1
+set_property top PC_IROM [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+launch_simulation
+Command: launch_simulation 
+boost::filesystem::remove: 另一个程序正在使用此文件，进程无法访问。: "G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim/simulate.log"
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'PC_IROM' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj PC_IROM_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IROM
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/PC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC_IROM
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.IROM
+Compiling module xil_defaultlib.PC_IROM
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot PC_IROM_behav
+
+****** Webtalk v2019.2 (64-bit)
+  **** SW Build 2700185 on Thu Oct 24 18:46:05 MDT 2019
+  **** IP Build 2699827 on Thu Oct 24 21:16:38 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim/xsim.dir/PC_IROM_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Aug 29 14:46:51 2024...
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "PC_IROM_behav -key {Behavioral:sim_1:Functional:PC_IROM} -tclbatch {PC_IROM.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source PC_IROM.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+$finish called at time : 10 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" Line 50
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'PC_IROM_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 1061.516 ; gain = 0.000
+run 10 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'PC_IROM' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj PC_IROM_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IROM
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/PC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC_IROM
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.IROM
+Compiling module xil_defaultlib.PC_IROM
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot PC_IROM_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "PC_IROM_behav -key {Behavioral:sim_1:Functional:PC_IROM} -tclbatch {PC_IROM.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source PC_IROM.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+$finish called at time : 10 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" Line 50
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'PC_IROM_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 1102.805 ; gain = 0.543
+run 10 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'PC_IROM' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj PC_IROM_vlog.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "PC_IROM_behav -key {Behavioral:sim_1:Functional:PC_IROM} -tclbatch {PC_IROM.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source PC_IROM.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+$finish called at time : 10 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" Line 50
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'PC_IROM_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+run 10 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'PC_IROM' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj PC_IROM_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IROM
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/PC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC_IROM
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.IROM
+Compiling module xil_defaultlib.PC_IROM
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot PC_IROM_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "PC_IROM_behav -key {Behavioral:sim_1:Functional:PC_IROM} -tclbatch {PC_IROM.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source PC_IROM.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+$finish called at time : 40 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" Line 60
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'PC_IROM_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 1103.148 ; gain = 0.000
+run 10 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'PC_IROM' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj PC_IROM_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IROM
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/PC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC_IROM
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.IROM
+Compiling module xil_defaultlib.PC_IROM
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot PC_IROM_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "PC_IROM_behav -key {Behavioral:sim_1:Functional:PC_IROM} -tclbatch {PC_IROM.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source PC_IROM.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+$finish called at time : 540 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" Line 61
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'PC_IROM_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 1103.148 ; gain = 0.000
+run 10 ps
+run 10 ps
+run 10 ps
+run 10 ps
+run 10 ns
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'PC_IROM' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj PC_IROM_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IROM
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/PC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC_IROM
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.IROM
+Compiling module xil_defaultlib.PC_IROM
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot PC_IROM_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "PC_IROM_behav -key {Behavioral:sim_1:Functional:PC_IROM} -tclbatch {PC_IROM.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source PC_IROM.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+$finish called at time : 540 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" Line 61
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'PC_IROM_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+run 10 ns
+run 10 ns
+run 10 ns
+relaunch_sim
+Command: launch_simulation -simset sim_1 -mode behavioral
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'PC_IROM' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj PC_IROM_vlog.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+Command: launch_simulation -simset sim_1 -mode behavioral
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot PC_IROM_behav xil_defaultlib.PC_IROM xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+$finish called at time : 540 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v" Line 61
+relaunch_sim: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 1213.570 ; gain = 0.000
+run 10 ns
+run 10 ns
+close [ open G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IF_ID.v w ]
+add_files G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IF_ID.v
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/IF_State_tb.v w ]
+add_files -fileset sim_1 G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/IF_State_tb.v
+update_compile_order -fileset sim_1
+export_ip_user_files -of_objects  [get_files G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v] -no_script -reset -force -quiet
+remove_files  -fileset sim_1 G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM.v
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/PC_IROM_tb.v
+update_compile_order -fileset sim_1
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+set_property top IF_State_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'IF_State_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj IF_State_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IF_ID.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IF_ID
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/IF_State_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IF_State_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot IF_State_tb_behav xil_defaultlib.IF_State_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot IF_State_tb_behav xil_defaultlib.IF_State_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.IROM
+Compiling module xil_defaultlib.IF_ID
+Compiling module xil_defaultlib.IF_State_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot IF_State_tb_behav
+
+****** Webtalk v2019.2 (64-bit)
+  **** SW Build 2700185 on Thu Oct 24 18:46:05 MDT 2019
+  **** IP Build 2699827 on Thu Oct 24 21:16:38 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim/xsim.dir/IF_State_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Aug 29 15:50:01 2024...
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "IF_State_tb_behav -key {Behavioral:sim_1:Functional:IF_State_tb} -tclbatch {IF_State_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source IF_State_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+$finish called at time : 540 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/IF_State_tb.v" Line 74
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'IF_State_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 1221.250 ; gain = 0.000
+run 10 ns
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'IF_State_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj IF_State_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IF_ID.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IF_ID
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/IROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IROM
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/new/PC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/IF_State_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IF_State_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+"xelab -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot IF_State_tb_behav xil_defaultlib.IF_State_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 60874ca36d0049e589d09298e400ce23 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot IF_State_tb_behav xil_defaultlib.IF_State_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.IROM
+Compiling module xil_defaultlib.IF_ID
+Compiling module xil_defaultlib.IF_State_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot IF_State_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'G:/computer/RISC-V-CPU/risc-v/risc-v.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "IF_State_tb_behav -key {Behavioral:sim_1:Functional:IF_State_tb} -tclbatch {IF_State_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source IF_State_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+$finish called at time : 540 ns : File "G:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sim_1/new/IF_State_tb.v" Line 74
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'IF_State_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 1221.250 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Aug 29 16:00:53 2024...
