@@ -1,1 +1,9 @@
 vivado_project/*
+.Xil
+risc-v.cache
+risc-v.hw
+risc-v.ip_user_files
+risc-v.sim
+vivado.jou
+vivado.log
+vivado_pid16388.str
