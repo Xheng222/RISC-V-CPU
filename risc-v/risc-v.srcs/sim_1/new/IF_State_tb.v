@@ -25,7 +25,6 @@ module IF_State_tb;
     reg rst;
     reg [31:0] npc;
     wire [31:0] pcReg;
-    wire [31:0] instrReg;
     wire [31:0] pc;
     wire [31:0] instr;
     
@@ -55,6 +54,8 @@ module IF_State_tb;
         .rd(rd),
         .imm(imm)
     );
+    
+    
     
     always #5 clk = ~clk;
 
