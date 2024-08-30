@@ -269,9 +269,9 @@ module WireTest_tb;
     initial begin
         clk = 1;
         rst = 1;
-        #10
+        #5
         rst = 0;
-        #90
+        #20
         rst = 1;
         #11
         for (i = 0; i < 50; i = i + 1) begin
