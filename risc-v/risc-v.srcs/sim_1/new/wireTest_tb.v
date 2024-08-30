@@ -162,6 +162,7 @@ module wireTest_tb(
     //         EX/MEM          //
     /////////////////////////////
 
+    wire [31:0] ALUoutput_2
     wire [31:0] pc_4;
     wire [31:0] imm_3;
     wire BranchEn_3;
@@ -191,16 +192,16 @@ module wireTest_tb(
         .rd2(rd2_2),
         .rd(rd_2),
         .pc(pc_3),
-        .ALUoutput_out(),
-        .MemRD_out(),
-        .MemWR_out(),
-        .MemRWType_out(),
-        .RegWR_out(),
-        .RegSrc_out(),
-        .imm_out(),
-        .rd2_out(),
-        .rd_out(),
-        .pc_out(),        
+        .ALUoutput_out(ALUoutput_2),
+        .MemRD_out(MemRD_3),
+        .MemWR_out(MemWR_3),
+        .MemRWType_out(MemRWType_3),
+        .RegWR_out(RegWR_3),
+        .RegSrc_out(RegSrc_3),
+        .imm_out(imm_3),
+        .rd2_out(rd2_3),
+        .rd_out(rd_3),
+        .pc_out(pc_4),        
     )
 
 
