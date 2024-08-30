@@ -51,6 +51,8 @@ module EX_MEM(
     output reg [31:0] pc_out
     );
     
+    
+    
     always @(posedge clk or negedge rst) begin
         if(!rst) begin
             ALUoutput_out <= 32'b0;
