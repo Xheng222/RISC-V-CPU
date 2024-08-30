@@ -24,7 +24,7 @@ module ID_EX(
     input clk,
     input rst,
     input MemRD,
-    input ALUsrc,
+    input ALUSrc,
     input [3:0] ALUop,
     input [2:0] BranchSrc,
     input BranchEn,
@@ -43,7 +43,7 @@ module ID_EX(
     output reg [31:0] pc_out,
     output reg [3:0] ALUop_out,
     output reg [31:0] rd1_out,
-    output reg ALUsrc_out,
+    output reg ALUSrc_out,
     output reg [31:0] rd2_out,
     output reg MemRD_out,
     output reg MemWR_out,
@@ -61,7 +61,7 @@ module ID_EX(
             pc_out <= 32'b0;
             ALUop_out <= 4'b0;
             rd1_out <= 32'b0;
-            ALUsrc_out <= 1'b0;
+            ALUSrc_out <= 1'b0;
             rd2_out <= 32'b0;
             MemRD_out <= 1'b0;
             MemWR_out <= 1'b0;
@@ -77,7 +77,7 @@ module ID_EX(
             pc_out <= pc;
             ALUop_out <= ALUop;
             rd1_out <= rd1;
-            ALUsrc_out <= ALUsrc;
+            ALUSrc_out <= ALUSrc;
             rd2_out <= rd2;
             MemRD_out <= MemRD;
             MemWR_out <= MemWR;
