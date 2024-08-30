@@ -77,7 +77,7 @@ module ID_EX(
             pc_out <= pc;
             ALUop_out <= ALUop;
             rd1_out <= rd1;
-            ALUsrc_out <= ALUsrc;
+            ALUsrc_out <= 1;
             rd2_out <= rd2;
             MemRD_out <= MemRD;
             MemWR_out <= MemWR;
