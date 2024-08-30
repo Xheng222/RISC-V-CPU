@@ -26,22 +26,22 @@ module MEM_WB(
     input rst,
     input RegWR,
     input [4:0] rd,
-    input [31:0] RdData,
+    input [31:0] rdData,
     output reg RegWR_out,
     output reg [4:0] rd_out,
-    output reg [31:0] RdData_out
+    output reg [31:0] rdData_out
     );
     
     always @(posedge clk or negedge rst) begin
         if(!rst) begin
             RegWR_out <= 1'b0;
             rd_out <= 5'b0;
-            RdData_out <= 32'b0;
+            rdData_out <= 32'b0;
         end
         else begin
             RegWR_out <= RegWR;
             rd_out <= rd;
-            RdData_out <= RdData;
+            rdData_out <= rdData;
         end
     end
 endmodule
