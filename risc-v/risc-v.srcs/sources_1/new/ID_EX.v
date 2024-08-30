@@ -29,7 +29,7 @@ module ID_EX(
     input [2:0] BranchSrc,
     input BranchEn,
     input RegWR,
-    input [1:0] RegSrc,
+    input [2:0] RegSrc,
     input MemWR,
     input [2:0] MemRWType,
     input [31:0] rd1,
@@ -49,7 +49,7 @@ module ID_EX(
     output reg MemWR_out,
     output reg [2:0] MemRWType_out,
     output reg RegWR_out,
-    output reg [1:0] RegSrc_out,
+    output reg [2:0] RegSrc_out,
     output reg [4:0] rd_out
     );
     
@@ -67,7 +67,7 @@ module ID_EX(
             MemWR_out <= 1'b0;
             MemRWType_out <= 3'b0;
             RegWR_out <= 1'b0;
-            RegSrc_out <= 2'b0;
+            RegSrc_out <= 3'b0;
             rd_out <= 5'b0;
         end
         else begin 
