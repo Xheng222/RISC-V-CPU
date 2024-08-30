@@ -6,8 +6,23 @@ module IF_ID(
     input [31:0] pc,
     input [31:0] instr,
     output reg [31:0] pcReg,
-    output reg [31:0] instrReg
+    output [6:0] opcode,
+    output [2:0] funct3,
+    output [6:0] funct7,
+    output [4:0] rs1,
+    output [4:0] rs2,
+    output [4:0] rd,
+    output [24:0] imm
     );
+    
+    reg [31:0] instrReg; 
+    assign opcode = instrReg[6:0];
+    assign funct3 = instrReg[14:12];
+    assign funct7 = instrReg[31:25];
+    assign rs1 = instrReg[19:15];
+    assign rs2 = instrReg[24:20];
+    assign rd = instrReg[11:7];
+    assign imm = instrReg[31:7];
     
     always @(posedge clk or negedge rst) begin
     if (!rst) begin
