@@ -47,7 +47,13 @@ module IF_State_tb;
         .pc(pc),
         .instr(instr),
         .pcReg(pcReg),
-        .instrReg(instrReg)
+        .opcode(opcode),
+        .funct3(funct3),
+        .funct7(funct7),
+        .rs1(rs1),
+        .rs2(rs2),
+        .rd(rd),
+        .imm(imm)
     );
     
     always #5 clk = ~clk;
