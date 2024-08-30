@@ -114,7 +114,7 @@ module WireTest_tb;
     wire BranchEn_ID_EX;
     wire [2:0] BranchSrc_ID_EX;
     wire [3:0] ALUop_ID_EX;
-    wire [31:0] rs2Data_ID_EX;    
+    wire [31:0] rs1Data_ID_EX;    
     wire [31:0] rs2Data_ID_EX;
     wire ALUSrc_ID_EX;
 
@@ -129,7 +129,7 @@ module WireTest_tb;
         .clk(clk),
         .rst(rst),
         .MemRD(MemRD),
-        .ALUsrc(ALUsrc),
+        .ALUsrc(ALUSrc),
         .ALUop(ALUop),
         .BranchSrc(BranchSrc),
         .BranchEn(BranchEn),
@@ -137,8 +137,8 @@ module WireTest_tb;
         .RegSrc(RegSrc),
         .MemWR(MemWR),
         .MemRWType(MemRWType),
-        .rd1(rs1data),
-        .rd2(rs2data),
+        .rd1(rs1Data),
+        .rd2(rs2Data),
         .rd(rd),
         .pc(pcReg),
         .imm(ImmExt),
@@ -169,7 +169,8 @@ module WireTest_tb;
         .pc(pc_ID_EX),
         .pcSrc(pcSrc),
         .jpc(jpc),
-        .ALUoutput(ALUoutput)
+        .ALUoutput(ALUoutput),
+        .imm(imm_ID_EX)
     );
 
     MUX_2 mux_2(
