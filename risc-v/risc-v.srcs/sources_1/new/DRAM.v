@@ -45,20 +45,20 @@ module DRAM(
     always @(posedge clk) begin
         if(MemWR) begin
             case(MemRWType)
-                3'b000 : dram[ALUoutput] <= {{24{rd2[7]}}, rd2[7:0]}; //8λ
-                3'b001 : dram[ALUoutput] <= {{16{rd2[15]}}, rd2[15:0]}; //16λ
-                3'b010 : dram[ALUoutput] <= rd2; //32λ
+                3'b000 : dram[ALUoutput] <= {{24{rd2[7]}}, rd2[7:0]}; //8位
+                3'b001 : dram[ALUoutput] <= {{16{rd2[15]}}, rd2[15:0]}; //16位
+                3'b010 : dram[ALUoutput] <= rd2; //32位
                 default: dram[ALUoutput] <= 32'b0; 
             endcase
         end
     end
     
     assign MemData = MemRD ? 
-                     (MemRWType == 3'b000 ? data_8 : // 8λ
-                      MemRWType == 3'b001 ? data_16 : // 16λ
-                      MemRWType == 3'b010 ? dram[ALUoutput] : //32λ
-                      MemRWType == 3'b100 ? data_8u : // �޷��� 8λ
-                      MemRWType == 3'b101 ? data_16u : // �޷��� 16λ
+                     (MemRWType == 3'b000 ? data_8 : // 8位
+                      MemRWType == 3'b001 ? data_16 : // 16位
+                      MemRWType == 3'b010 ? dram[ALUoutput] : //32位
+                      MemRWType == 3'b100 ? data_8u : // 无符号 8位
+                      MemRWType == 3'b101 ? data_16u : // 无符号 16位
                       32'b0
                      )
                      : 32'b0;
