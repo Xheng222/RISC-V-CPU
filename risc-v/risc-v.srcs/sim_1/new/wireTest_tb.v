@@ -90,14 +90,18 @@ module WireTest_tb;
         .RegSrc(RegSrc)
     );
     
+    wire [4:0] rd_WB;
+    wire RegWR_WB;
+    wire [31:0] RegData_WB;
+    
     RegFile regfile(
         .clk(clk),
         .rst(rst),
         .rs1(rs1),
         .rs2(rs2),
-        .rd(rd),
-        .RegWR(1'b0),
-        .RegData(32'b0),
+        .rd(rd_WB),
+        .RegWR(RegWR_WB),
+        .RegData(RegData_WB),
         .rs1Data(rs1Data),
         .rs2Data(rs2Data)
     );
@@ -224,7 +228,42 @@ module WireTest_tb;
         .rd_out(rd_EX_MEM),
         .pc_out(pc_EX_MEM)  
     );
-
+    
+    // DRAM
+    
+    wire [31:0] MemData;
+    wire [31:0] rdData;
+    
+    DRAM dram(
+        .clk(clk),
+        .MemRD(MemRD_EX_MEM),
+        .MemWR(MemWR_EX_MEM),
+        .MemRWType(MemRWType_EX_MEM),
+        .ALUoutput(ALUoutput_EX_MEM),
+        .rd2(rs2Data_EX_MEM),
+        .MemData(MemData)
+    );
+    
+    Rd_Select rd_select(
+        .ALUoutput(ALUoutput_EX_MEM),
+        .imm(imm_EX_MEM),
+        .pc(pc_EX_MEM),
+        .MemData(MemData),
+        .RegSrc(RegSrc_EX_MEM),
+        .rdData(rdData)
+    );
+    
+    MEM_WB mem_wb(
+        .clk(clk),
+        .rst(rst),
+        .RegWR(RegWR_EX_MEM),
+        .rd(rd_EX_MEM),
+        .rdData(rdData),
+        .rd_out(rd_WB),
+        .RegWR_out(RegWR_WB),
+        .rdData_out(RegData_WB)
+    );
+    
     always #5 clk = ~clk;
     integer i;
     initial begin
