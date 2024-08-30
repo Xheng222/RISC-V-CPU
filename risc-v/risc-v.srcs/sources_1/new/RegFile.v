@@ -40,7 +40,7 @@ module RegFile(
     always @(posedge clk or negedge rst) begin
         if(!rst) begin
             for(i=0;i<32;i=i+1) begin
-                regs[i] <= 0;
+                regs[i] <= 32'b0;
             end
         end
         else if(RegWR) begin
