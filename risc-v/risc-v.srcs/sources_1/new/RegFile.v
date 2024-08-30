@@ -28,8 +28,8 @@ module RegFile(
     input [4:0] rd,
     input RegWR,
     input [31:0] RegData,
-    output [31:0] rd1,
-    output [31:0] rd2
+    output [31:0] rs1Data,
+    output [31:0] rs2Data
     );
     
     reg [31:0] regs [31:0];
@@ -49,7 +49,7 @@ module RegFile(
     end
     
     //第一个寄存器恒为0
-    assign rd1 = (rs1 == 5'b0)? 32'b0 : regs[rs1];
-    assign rd2 = (rs2 == 5'b0)? 32'b0 : regs[rs2];
+    assign rs1Data = (rs1 == 5'b0)? 32'b0 : regs[rs1];
+    assign rs2Data = (rs2 == 5'b0)? 32'b0 : regs[rs2];
     
 endmodule
