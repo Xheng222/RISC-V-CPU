@@ -33,7 +33,7 @@ module WireTest_tb;
     wire [2:0] RegSrc;
     
     // RegFile
-    wire [31:0] RegData;
+//    wire [31:0] RegData;
     wire [31:0] rs1Data;
     wire [31:0] rs2Data;
     
@@ -97,7 +97,7 @@ module WireTest_tb;
         .rs2(rs2),
         .rd(rd),
         .RegWR(1'b0),
-        .RegData(0),
+        .RegData(32'b0),
         .rs1Data(rs1Data),
         .rs2Data(rs2Data)
     );
@@ -114,7 +114,7 @@ module WireTest_tb;
     wire BranchEn_ID_EX;
     wire [2:0] BranchSrc_ID_EX;
     wire [3:0] ALUop_ID_EX;
-    wire [31:0] rs2Data_ID_EX;    
+    wire [31:0] rs1Data_ID_EX;    
     wire [31:0] rs2Data_ID_EX;
     wire ALUSrc_ID_EX;
 
@@ -129,7 +129,7 @@ module WireTest_tb;
         .clk(clk),
         .rst(rst),
         .MemRD(MemRD),
-        .ALUsrc(ALUsrc),
+        .ALUSrc(ALUSrc),
         .ALUop(ALUop),
         .BranchSrc(BranchSrc),
         .BranchEn(BranchEn),
@@ -137,13 +137,13 @@ module WireTest_tb;
         .RegSrc(RegSrc),
         .MemWR(MemWR),
         .MemRWType(MemRWType),
-        .rd1(rs1data),
-        .rd2(rs2data),
+        .rd1(rs1Data),
+        .rd2(rs2Data),
         .rd(rd),
         .pc(pcReg),
         .imm(ImmExt),
         .MemRD_out(MemRD_ID_EX),
-        .ALUsrc_out(ALUSrc_ID_EX),
+        .ALUSrc_out(ALUSrc_ID_EX),
         .ALUop_out(ALUop_ID_EX),
         .BranchSrc_out(BranchSrc_ID_EX),
         .BranchEn_out(BranchEn_ID_EX),
@@ -165,13 +165,14 @@ module WireTest_tb;
     
     Branch_Control branch_control(
         .BranchSrc(BranchSrc_ID_EX),
+        .imm(imm_ID_EX),
         .BranchEn(BranchEn_ID_EX),
         .pc(pc_ID_EX),
         .pcSrc(pcSrc),
-        .jpc(jpc),
-        .ALUoutput(ALUoutput)
+        .ALUoutput(ALUoutput),     
+        .jpc(jpc)
     );
-
+    
     MUX_2 mux_2(
         .a0(imm_ID_EX),
         .a1(rs2Data_ID_EX),
@@ -191,9 +192,6 @@ module WireTest_tb;
     wire [31:0] ALUoutput_EX_MEM;
     wire [31:0] pc_EX_MEM;
     wire [31:0] imm_EX_MEM;
-    wire BranchEn_EX_MEM;
-    wire [2:0] BranchSrc_EX_MEM;
-    wire [3:0] ALUop_EX_MEM;
     wire [31:0] rs2Data_EX_MEM;
     wire MemRD_EX_MEM;
     wire MemWR_EX_MEM;
