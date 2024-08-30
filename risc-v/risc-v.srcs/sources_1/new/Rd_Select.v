@@ -26,10 +26,10 @@ module Rd_Select(
     input [31:0] pc,
     input [31:0] MemData,
     input [2:0] RegSrc,
-    output [31:0] RdData
+    output [31:0] rdData
     );
 
-    assign RdData = RegSrc == 3'b000 ? ALUoutput : //来自ALU
+    assign rdData = RegSrc == 3'b000 ? ALUoutput : //来自ALU
                     RegSrc == 3'b001 ? pc + 32'b100 : // pc+4
                     RegSrc == 3'b010 ? MemData : // 来自内存
                     RegSrc == 3'b011 ? imm : // imm

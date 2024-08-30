@@ -33,7 +33,7 @@ module WireTest_tb;
     wire [2:0] RegSrc;
     
     // RegFile
-    wire [31:0] RegData;
+//    wire [31:0] RegData;
     wire [31:0] rs1Data;
     wire [31:0] rs2Data;
     
@@ -90,14 +90,18 @@ module WireTest_tb;
         .RegSrc(RegSrc)
     );
     
+    wire [4:0] rd_WB;
+    wire RegWR_WB;
+    wire [31:0] RegData_WB;
+    
     RegFile regfile(
         .clk(clk),
         .rst(rst),
         .rs1(rs1),
         .rs2(rs2),
-        .rd(rd),
-        .RegWR(1'b0),
-        .RegData(0),
+        .rd(rd_WB),
+        .RegWR(RegWR_WB),
+        .RegData(RegData_WB),
         .rs1Data(rs1Data),
         .rs2Data(rs2Data)
     );
@@ -114,7 +118,7 @@ module WireTest_tb;
     wire BranchEn_ID_EX;
     wire [2:0] BranchSrc_ID_EX;
     wire [3:0] ALUop_ID_EX;
-    wire [31:0] rs2Data_ID_EX;    
+    wire [31:0] rs1Data_ID_EX;    
     wire [31:0] rs2Data_ID_EX;
     wire ALUSrc_ID_EX;
 
@@ -129,7 +133,7 @@ module WireTest_tb;
         .clk(clk),
         .rst(rst),
         .MemRD(MemRD),
-        .ALUsrc(ALUsrc),
+        .ALUSrc(ALUSrc),
         .ALUop(ALUop),
         .BranchSrc(BranchSrc),
         .BranchEn(BranchEn),
@@ -137,13 +141,13 @@ module WireTest_tb;
         .RegSrc(RegSrc),
         .MemWR(MemWR),
         .MemRWType(MemRWType),
-        .rd1(rs1data),
-        .rd2(rs2data),
+        .rd1(rs1Data),
+        .rd2(rs2Data),
         .rd(rd),
         .pc(pcReg),
         .imm(ImmExt),
         .MemRD_out(MemRD_ID_EX),
-        .ALUsrc_out(ALUSrc_ID_EX),
+        .ALUSrc_out(ALUSrc_ID_EX),
         .ALUop_out(ALUop_ID_EX),
         .BranchSrc_out(BranchSrc_ID_EX),
         .BranchEn_out(BranchEn_ID_EX),
@@ -165,13 +169,14 @@ module WireTest_tb;
     
     Branch_Control branch_control(
         .BranchSrc(BranchSrc_ID_EX),
+        .imm(imm_ID_EX),
         .BranchEn(BranchEn_ID_EX),
         .pc(pc_ID_EX),
         .pcSrc(pcSrc),
-        .jpc(jpc),
-        .ALUoutput(ALUoutput)
+        .ALUoutput(ALUoutput),     
+        .jpc(jpc)
     );
-
+    
     MUX_2 mux_2(
         .a0(imm_ID_EX),
         .a1(rs2Data_ID_EX),
@@ -191,9 +196,6 @@ module WireTest_tb;
     wire [31:0] ALUoutput_EX_MEM;
     wire [31:0] pc_EX_MEM;
     wire [31:0] imm_EX_MEM;
-    wire BranchEn_EX_MEM;
-    wire [2:0] BranchSrc_EX_MEM;
-    wire [3:0] ALUop_EX_MEM;
     wire [31:0] rs2Data_EX_MEM;
     wire MemRD_EX_MEM;
     wire MemWR_EX_MEM;
@@ -226,7 +228,42 @@ module WireTest_tb;
         .rd_out(rd_EX_MEM),
         .pc_out(pc_EX_MEM)  
     );
-
+    
+    // DRAM
+    
+    wire [31:0] MemData;
+    wire [31:0] rdData;
+    
+    DRAM dram(
+        .clk(clk),
+        .MemRD(MemRD_EX_MEM),
+        .MemWR(MemWR_EX_MEM),
+        .MemRWType(MemRWType_EX_MEM),
+        .ALUoutput(ALUoutput_EX_MEM),
+        .rd2(rs2Data_EX_MEM),
+        .MemData(MemData)
+    );
+    
+    Rd_Select rd_select(
+        .ALUoutput(ALUoutput_EX_MEM),
+        .imm(imm_EX_MEM),
+        .pc(pc_EX_MEM),
+        .MemData(MemData),
+        .RegSrc(RegSrc_EX_MEM),
+        .rdData(rdData)
+    );
+    
+    MEM_WB mem_wb(
+        .clk(clk),
+        .rst(rst),
+        .RegWR(RegWR_EX_MEM),
+        .rd(rd_EX_MEM),
+        .rdData(rdData),
+        .rd_out(rd_WB),
+        .RegWR_out(RegWR_WB),
+        .rdData_out(RegData_WB)
+    );
+    
     always #5 clk = ~clk;
     integer i;
     initial begin
