@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps32'hffffffff32'hffffffff
+`timescale 1ns / 1ps
 
 module DRAM(
     input clk,
