@@ -28,7 +28,7 @@ module IF_ID(
     always @(posedge clk or negedge rst) begin
     if (!rst) begin
         pcReg <= 32'b0;
-        instrReg <= 32'b0;
+        instrReg <= 32'h00010011; // addi x0, x0, 0  :nop
         cnt <= 0;
     end
     else begin
