@@ -1,24 +1,4 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2024/08/30 13:29:18
-// Design Name: 
-// Module Name: DRAM
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
+`timescale 1ns / 1ps32'hffffffff32'hffffffff
 
 module DRAM(
     input clk,
@@ -36,13 +16,14 @@ module DRAM(
     wire [31:0] data_16;
     wire [31:0] data_8u;
     wire [31:0] data_16u;
+    wire [31:0] data_32;
     
     initial begin
         $readmemb("../../../../risc-v.srcs/sources_1/new/DRAM.txt", dram);
     end
 
     assign data_8 = {{24{dram[ALUoutput][7]}}, dram[ALUoutput][7:0]};
-    assign data_16 = {{16{dram[dram[ALUoutput]][7]}}, dram[ALUoutput][7:0], dram[ALUoutput + 1][7:0]};
+    assign data_16 = {{16{dram[ALUoutput][7]}}, dram[ALUoutput][7:0], dram[ALUoutput + 1][7:0]};
     assign data_8u = {{24{1'b0}}, dram[ALUoutput][7:0]};
     assign data_16u = {{16{1'b0}}, dram[ALUoutput][7:0], dram[ALUoutput + 1][7:0]};
     assign data_32 = {dram[ALUoutput][7:0], dram[ALUoutput + 1][7:0], dram[ALUoutput + 2][7:0], dram[ALUoutput + 3][7:0]};
