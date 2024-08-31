@@ -47,6 +47,11 @@ module WireTest_tb;
         .pc(pc)
     );
     
+//    PC_test pc_1(
+//        .npc(npc),
+//        .pc(pc)
+//    );
+    
     IROM irom(
         .pc(pc),
         .instr(instr)
@@ -269,9 +274,9 @@ module WireTest_tb;
     initial begin
         clk = 1;
         rst = 1;
-        #10
+        #5
         rst = 0;
-        #90
+        #10
         rst = 1;
         #11
         for (i = 0; i < 50; i = i + 1) begin
