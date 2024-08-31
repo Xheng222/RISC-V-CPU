@@ -12,6 +12,7 @@ module Data_Hazard(
     input RegWR_MEM_WB,
     input [4:0] rd_MEM_WB,
     input pcSrc,
+    input [2:0] RegSrc_ID_EX,
     
     output nop_pc,
     output pause_pc,
@@ -22,7 +23,13 @@ module Data_Hazard(
     output nop_EX_MEM,
     output pause_EX_MEM,
     output nop_MEM_WB,
-    output pause_MEM_WB
+    output pause_MEM_WB,
+    
+    // forward
+    output [1:0] rs1_forward,
+    output [1:0] rs2_forward,
+    output rs1_select,
+    output rs2_select
     );
     
     assign nop_MEM_WB = 0;
