@@ -8,7 +8,14 @@ module IROM(
 	reg[7:0] rom[1023:0];
 	
     //rom进行初始化
+    integer i = 0;
     initial begin
+        for (i = 0; i < 1024; i = i + 4) begin
+            rom[i] = 8'b00000000;
+            rom[i + 1] = 8'b00000000;
+            rom[i + 2] = 8'b00000000;
+            rom[i + 3] = 8'b00010011;
+        end
         $readmemb("../../../../risc-v.srcs/sources_1/new/IROM.txt", rom);
     end
     

@@ -14,7 +14,9 @@ module Control(
     output BranchEn,
     output [2:0] BranchSrc,
     output RegWR,
-    output [2:0] RegSrc
+    output [2:0] RegSrc,
+    output rs1RD,
+    output rs2RD
     );
     
     wire lui;
@@ -114,5 +116,9 @@ module Control(
                     ( (load) ) ? 3'b010 :
                     ( (lui) ) ? 3'b011 :
                     ( (auipc) ) ? 3'b100 : 3'b000 ;
+                    
+    assign rs1RD = ( (jal) || (lui) || (auipc) ) ? 0 : 1;
+    
+    assign rs2RD = ( (R_type) || (store) || (B_type) ) ? 1 : 0;
     
 endmodule
