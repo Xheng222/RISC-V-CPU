@@ -3,6 +3,8 @@
 module PC(
     input clk,
     input rst,
+    input nop,
+    input pause,
     input [31:0] npc,
     output reg [31:0] pc
     );
@@ -15,8 +17,13 @@ module PC(
             cnt = 0;
         end
         else begin
-            if (!cnt) cnt <= 1;
-            else pc <= npc;
+            if (!nop && !pause) begin
+                if (!cnt) cnt <= 1;
+                else pc <= npc;                
+            end
+            else begin
+                if (nop) pc = 32'b0;
+            end    
         end
     end
     

@@ -14,7 +14,9 @@ module Control(
     output BranchEn,
     output [2:0] BranchSrc,
     output RegWR,
-    output [2:0] RegSrc
+    output [2:0] RegSrc,
+    output rs1RD,
+    output rs2RD
     );
     
     wire lui;

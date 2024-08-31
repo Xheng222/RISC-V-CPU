@@ -1,28 +1,10 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2024/08/29 20:30:57
-// Design Name: 
-// Module Name: ID_EX
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module ID_EX(
     input clk,
     input rst,
+    input nop,
+    input pause,
     input MemRD,
     input ALUSrc,
     input [3:0] ALUop,
@@ -66,25 +48,45 @@ module ID_EX(
             MemRD_out <= 1'b0;
             MemWR_out <= 1'b0;
             MemRWType_out <= 3'b0;
-            RegWR_out <= 1'b0;
+            RegWR_out <= 1'b1;
             RegSrc_out <= 3'b0;
             rd_out <= 5'b0;
         end
         else begin 
-            BranchSrc_out <= BranchSrc;
-            imm_out <= imm;
-            BranchEn_out <= BranchEn;
-            pc_out <= pc;
-            ALUop_out <= ALUop;
-            rd1_out <= rd1;
-            ALUSrc_out <= ALUSrc;
-            rd2_out <= rd2;
-            MemRD_out <= MemRD;
-            MemWR_out <= MemWR;
-            MemRWType_out <= MemRWType;
-            RegWR_out <= RegWR;
-            RegSrc_out <= RegSrc;
-            rd_out <= rd;
+            if (!nop && !pause) begin
+                BranchSrc_out <= BranchSrc;
+                imm_out <= imm;
+                BranchEn_out <= BranchEn;
+                pc_out <= pc;
+                ALUop_out <= ALUop;
+                rd1_out <= rd1;
+                ALUSrc_out <= ALUSrc;
+                rd2_out <= rd2;
+                MemRD_out <= MemRD;
+                MemWR_out <= MemWR;
+                MemRWType_out <= MemRWType;
+                RegWR_out <= RegWR;
+                RegSrc_out <= RegSrc;
+                rd_out <= rd;
+            end
+            else begin
+                if (nop) begin
+                    BranchSrc_out <= 3'b0;
+                    imm_out <= 32'b0;
+                    BranchEn_out <= 1'b0;
+                    pc_out <= 32'b0;
+                    ALUop_out <= 4'b0;
+                    rd1_out <= 32'b0;
+                    ALUSrc_out <= 1'b0;
+                    rd2_out <= 32'b0;
+                    MemRD_out <= 1'b0;
+                    MemWR_out <= 1'b0;
+                    MemRWType_out <= 3'b0;
+                    RegWR_out <= 1'b1;
+                    RegSrc_out <= 3'b0;
+                    rd_out <= 5'b0;
+                end
+            end
         end
     end
     
