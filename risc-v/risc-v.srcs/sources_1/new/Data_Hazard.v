@@ -11,6 +11,7 @@ module Data_Hazard(
     input [4:0] rd_EX_MEM,
     input RegWR_MEM_WB,
     input [4:0] rd_MEM_WB,
+    input pcSrc,
     
     output nop_pc,
     output pause_pc,
@@ -56,13 +57,13 @@ module Data_Hazard(
     assign rs1_Hazard = (!rs1RD) ? 0 : (rs1_IF_ID_Hazard || rs1_EX_MEM_Hazard || rs1_MEM_WB_Hazard);
     assign rs2_Hazard = (!rs2RD) ? 0 : (rs2_IF_ID_Hazard || rs2_EX_MEM_Hazard || rs2_MEM_WB_Hazard);
     
-    assign nop_ID_EX = (rs1_Hazard || rs2_Hazard) ? 1 : 0;
+    assign nop_ID_EX = (rs1_Hazard || rs2_Hazard || pcSrc);
     assign pause_ID_EX = 0;
     
-    assign nop_IF_ID = 0;
-    assign pause_IF_ID = (rs1_Hazard || rs2_Hazard) ? 1 : 0;
+    assign nop_IF_ID = pcSrc;
+    assign pause_IF_ID = (rs1_Hazard || rs2_Hazard);
     
     assign nop_pc = 0;
-    assign pause_pc = (rs1_Hazard || rs2_Hazard) ? 1 : 0;
+    assign pause_pc = (rs1_Hazard || rs2_Hazard);
     
 endmodule

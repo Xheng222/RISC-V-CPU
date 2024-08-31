@@ -118,9 +118,6 @@ module RISC_CPU(
     // SEXT
     wire [31:0] ImmExt;
 
-
-
-
     SEXT sext(
         .imm(imm),
         .ImmType(ImmType),
@@ -309,6 +306,7 @@ module RISC_CPU(
         .rd_EX_MEM(rd_EX_MEM),
         .RegWR_MEM_WB(RegWR_MEM_WB),
         .rd_MEM_WB(rd_MEM_WB),
+        .pcSrc(pcSrc),
         
         .nop_pc(nop_pc),
         .pause_pc(pause_pc),
