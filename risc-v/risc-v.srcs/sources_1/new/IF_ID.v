@@ -23,15 +23,19 @@ module IF_ID(
     assign rs2 = instrReg[24:20];
     assign rd = instrReg[11:7];
     assign imm = instrReg[31:7];
+    reg cnt;
     
     always @(posedge clk or negedge rst) begin
     if (!rst) begin
         pcReg <= 32'b0;
         instrReg <= 32'b0;
+        cnt <= 0;
     end
     else begin
-        pcReg <= pc;
-        instrReg <= instr;
+        if (!cnt) cnt <= 1;
+        else instrReg <= instr;
+        
+        pcReg <= pc;       
     end
 end
     
