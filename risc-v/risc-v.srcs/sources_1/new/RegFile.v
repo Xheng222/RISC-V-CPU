@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2024/08/29 19:20:19
-// Design Name: 
-// Module Name: RegFile
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module RegFile(
     input clk,
@@ -34,13 +14,11 @@ module RegFile(
     
     reg [31:0] regs [31:0];
     
-
-    
     integer i;
     always @(posedge clk or negedge rst) begin
         if(!rst) begin
             for(i=0;i<32;i=i+1) begin
-                regs[i] <= 32'b0;
+                regs[i] <= 114514;
             end
         end
         else if(RegWR) begin
