@@ -116,5 +116,9 @@ module Control(
                     ( (load) ) ? 3'b010 :
                     ( (lui) ) ? 3'b011 :
                     ( (auipc) ) ? 3'b100 : 3'b000 ;
+                    
+    assign rs1RD = ( (jal) || (lui) || (auipc) ) ? 0 : 1;
+    
+    assign rs2RD = ( (R_type) || (store) || (B_type) ) ? 1 : 0;
     
 endmodule
