@@ -3,6 +3,8 @@
 module IF_ID(
     input clk,
     input rst,
+    input nop,
+    input pause,
     input [31:0] pc,
     input [31:0] instr,
     output reg [31:0] pcReg,
@@ -32,10 +34,17 @@ module IF_ID(
         cnt <= 0;
     end
     else begin
-        if (!cnt) cnt <= 1;
-        else instrReg <= instr;
-        
-        pcReg <= pc;       
+        if (!nop && !pause) begin
+            if (!cnt) cnt <= 1;
+            else instrReg <= instr;   
+            pcReg <= pc;                        
+        end
+        else begin
+            if (nop) begin
+                pcReg <= 32'b0;
+                instrReg <= 32'b00010011;
+            end
+        end    
     end
 end
     

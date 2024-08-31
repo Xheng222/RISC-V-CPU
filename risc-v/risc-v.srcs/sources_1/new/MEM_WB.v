@@ -1,29 +1,10 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2024/08/30 13:02:27
-// Design Name: 
-// Module Name: MEM_WB
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-//RegWR rd[4:0] RdData[31:0]
 
 module MEM_WB(
     input clk,
     input rst,
+    input nop,
+    input pause,
     input RegWR,
     input [4:0] rd,
     input [31:0] rdData,
@@ -34,14 +15,24 @@ module MEM_WB(
     
     always @(posedge clk or negedge rst) begin
         if(!rst) begin
-            RegWR_out <= 1'b0;
+            RegWR_out <= 1'b1;
             rd_out <= 5'b0;
             rdData_out <= 32'b0;
         end
         else begin
-            RegWR_out <= RegWR;
-            rd_out <= rd;
-            rdData_out <= rdData;
+            if (!nop && !pause) begin
+                RegWR_out <= RegWR;
+                rd_out <= rd;
+                rdData_out <= rdData;                
+            end
+            else begin
+                if (nop) begin
+                    RegWR_out <= 1'b1;
+                    rd_out <= 5'b0;
+                    rdData_out <= 32'b0;            
+                end
+            end
+
         end
     end
 endmodule
