@@ -23,6 +23,7 @@ module RISC_CPU(
         .npc(npc)
     );
     
+    wire test;
     PC pc_1(
         .clk(clk),
         .rst(rst),
@@ -30,7 +31,8 @@ module RISC_CPU(
         .pause(pause_pc),
         .npc(npc),
         .pc(pc),
-        .instr(instr)
+        .instr(instr),
+        .test(test)
     );
     
     // IF_ID
