@@ -13,6 +13,7 @@ module tb_uart_top;
 
     // Êä³öÐÅºÅ
     wire rs232_txd;
+    wire O_rs232_txd;
     wire [6:0] led;
     wire [1:0] px;
     wire [7:0] led_reg;
@@ -26,7 +27,7 @@ module tb_uart_top;
         .I_rst_n(rst_n),
         .I_rs232_rxd(rs232_rxd),
         .I_rx_start(rx_start),
-        .O_rs232_txd(rs232_txd),
+        .O_rs232_txd(O_rs232_txd),
         .O_rx_done(O_rx_done),
         .O_rx_Data(O_rx_Data),
         .O_data_counter(O_data_counter)

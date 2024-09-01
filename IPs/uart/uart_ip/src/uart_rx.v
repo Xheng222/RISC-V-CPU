@@ -36,6 +36,11 @@ module uart_rx(
     reg         R_rs232_rx_reg2 ;
     reg         R_rs232_rx_reg3 ;
     
+    reg         O_rs232_rx_reg0 ;
+    reg         O_rs232_rx_reg1 ;
+    reg         O_rs232_rx_reg2 ;
+    reg         O_rs232_rx_reg3 ;
+    
     reg         R_receiving     ;
     
     reg [3:0]   R_state         ;
@@ -43,6 +48,7 @@ module uart_rx(
     reg         O_rs232_rxd_reg ;
     
     wire        W_rs232_rxd_neg ;
+    
     
     ////////////////////////////////////////////////////////////////////////////////
     // 功能：把 I_rs232_rxd 打的前两拍，是为了消除亚稳态
@@ -92,6 +98,7 @@ module uart_rx(
                 R_state         <= 4'd0 ;
                 R_para_data_reg <= 8'd0 ;
                 O_bps_rx_clk_en <= 1'b0 ;
+                O_rs232_rxd_reg <= 1'b0 ;
             end 
         else if(R_receiving && !O_rx_done)
             begin

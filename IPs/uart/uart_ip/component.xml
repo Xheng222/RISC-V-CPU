@@ -3,7 +3,7 @@
   <spirit:vendor>xilinx.com</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>uart_top</spirit:name>
-  <spirit:version>1.0</spirit:version>
+  <spirit:version>2.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>I_rst_n</spirit:name>
@@ -64,7 +64,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>2df5bee8</spirit:value>
+            <spirit:value>09d58921</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -80,7 +80,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>27391b3e</spirit:value>
+            <spirit:value>d40da609</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -95,7 +95,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>00737684</spirit:value>
+            <spirit:value>2762bf3c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -293,14 +293,14 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/uart_top_v1_0.tcl</spirit:name>
+        <spirit:name>xgui/uart_top_v2_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_f64a5dae</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
-  <spirit:description>uart_top_v1_0</spirit:description>
+  <spirit:description>uart_top_v2_0</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
@@ -337,24 +337,33 @@
       <xilinx:taxonomies>
         <xilinx:taxonomy>/UserIP</xilinx:taxonomy>
       </xilinx:taxonomies>
-      <xilinx:displayName>uart_top_v1_0</xilinx:displayName>
+      <xilinx:displayName>uart_top_v2_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
-      <xilinx:coreRevision>2</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-09-01T09:09:44Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>1</xilinx:coreRevision>
+      <xilinx:upgrades>
+        <xilinx:canUpgradeFrom>xilinx.com:user:uart_top:1.0</xilinx:canUpgradeFrom>
+      </xilinx:upgrades>
+      <xilinx:coreCreationDateTime>2024-09-01T12:54:07Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b7cca78_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@559c3425_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@336d0502_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@14f4b796_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@aafbcda_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e500e0c_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@20083b02_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30f6a1de_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46694def_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@296eb6cd_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@325ab1ce_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7532e102_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e2f232b_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c0909_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c550c41_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51d7e652_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5980be9c_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28590e19_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39cacebd_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38f17d08_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="310f65b7"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="3bf5de0f"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="572b081c"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="b9c7c30e"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="f8878032"/>
     </xilinx:packagingInfo>
