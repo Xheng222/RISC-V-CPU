@@ -96,6 +96,7 @@ module RISC_CPU(
     );
     
     
+    
     // RegFile
     wire [31:0] rs1Data;
     wire [31:0] rs2Data;
@@ -113,6 +114,28 @@ module RISC_CPU(
         .RegData(RegData_MEM_WB),
         .rs1Data(rs1Data),
         .rs2Data(rs2Data)
+    );
+    
+    // rs1 rs2 MUX
+    wire rs1_select;
+    wire rs2_select;
+    wire [31:0] rs1_forward_data;
+    wire [31:0] rs2_forward_data;
+    wire [31:0] rs1Data_MUX;
+    wire [31:0] rs2Data_MUX;
+    
+    MUX_2 mux_rs1(
+        .a0(rs1Data),
+        .a1(rs1_forward_data),
+        .select(rs1_select),
+        .data2(rs1Data_MUX)
+    );
+    
+    MUX_2 mux_rs2(
+        .a0(rs2Data),
+        .a1(rs2_forward_data),
+        .select(rs2_select),
+        .data2(rs2Data_MUX)
     );
     
     // SEXT
@@ -157,8 +180,8 @@ module RISC_CPU(
         .RegSrc(RegSrc),
         .MemWR(MemWR),
         .MemRWType(MemRWType),
-        .rd1(rs1Data),
-        .rd2(rs2Data),
+        .rd1(rs1Data_MUX),
+        .rd2(rs2Data_MUX),
         .rd(rd),
         .pc(pcReg),
         .imm(ImmExt),
@@ -178,12 +201,26 @@ module RISC_CPU(
         .imm_out(imm_ID_EX)
     );
 
-    // EX State //
+    // EX State 
+    // ALU
+    wire [31:0] ALUoutput;
+    wire [31:0] data2_ALU;
+    
+    MUX_2 mux_ALU(
+        .a0(imm_ID_EX),
+        .a1(rs2Data_ID_EX),
+        .select(ALUSrc_ID_EX),
+        .data2(data2_ALU)
+    );    
+            
+    ALU alu(
+        .ALUop(ALUop_ID_EX),
+        .data1(rs1Data_ID_EX),
+        .data2(data2_ALU),
+        .ALUoutput(ALUoutput)
+    );    
     
     // Branch_Control
-    wire [31:0] ALUoutput;
-    wire [31:0] data2;
-    
     Branch_Control branch_control(
         .BranchSrc(BranchSrc_ID_EX),
         .imm(imm_ID_EX),
@@ -194,20 +231,6 @@ module RISC_CPU(
         .jpc(jpc)
     );
     
-    MUX_2 mux_2(
-        .a0(imm_ID_EX),
-        .a1(rs2Data_ID_EX),
-        .select(ALUSrc_ID_EX),
-        .data2(data2)
-    );
-
-    ALU alu(
-        .ALUop(ALUop_ID_EX),
-        .data1(rs1Data_ID_EX),
-        .data2(data2),
-        .ALUoutput(ALUoutput)
-    );
-
     // EX/MEM
 
     wire [31:0] ALUoutput_EX_MEM;
@@ -295,6 +318,10 @@ module RISC_CPU(
     );
     
     // Data Hazard
+    wire [1:0] rs1_forward;
+    wire [1:0] rs2_forward;
+
+    
     Data_Hazard data_hazard(
         .rs1RD(rs1RD),
         .rs1_IF_ID(rs1),
@@ -307,6 +334,7 @@ module RISC_CPU(
         .RegWR_MEM_WB(RegWR_MEM_WB),
         .rd_MEM_WB(rd_MEM_WB),
         .pcSrc(pcSrc),
+        .RegSrc_ID_EX(RegSrc_ID_EX),
         
         .nop_pc(nop_pc),
         .pause_pc(pause_pc),
@@ -317,8 +345,26 @@ module RISC_CPU(
         .nop_EX_MEM(nop_EX_MEM),
         .pause_EX_MEM(pause_EX_MEM),
         .nop_MEM_WB(nop_MEM_WB),
-        .pause_MEM_WB(pause_MEM_WB)
+        .pause_MEM_WB(pause_MEM_WB),
+        
+        .rs1_forward(rs1_forward),
+        .rs2_forward(rs2_forward),
+        .rs1_select(rs1_select),
+        .rs2_select(rs2_select)
     );
- 
-       
+    
+    // Forward
+    Forward forward(
+        .RegSrc_ID_EX(RegSrc_ID_EX),
+        .ALUoutput(ALUoutput),
+        .imm_ID_EX(imm_ID_EX),
+        .pc_ID_EX(pc_ID_EX),
+        .rdData_MEM(MemData),
+        .rdData_WB(RegData_MEM_WB),
+        .rs1_forward(rs1_forward),
+        .rs2_forward(rs2_forward),
+        
+        .rs1_forward_data(rs1_forward_data),
+        .rs2_forward_data(rs2_forward_data)
+    );
 endmodule

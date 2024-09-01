@@ -39,30 +39,48 @@ module Data_Hazard(
     assign pause_EX_MEM = 0;
     
     wire rs1_Zero;
-    wire rs1_IF_ID_Hazard;
+    wire rs1_ID_EX_Hazard;
     wire rs1_EX_MEM_Hazard;
     wire rs1_MEM_WB_Hazard;
     
-    assign rs1_Zero = rs1_IF_ID == 0;
-    assign rs1_IF_ID_Hazard = RegWR_ID_EX && (rs1_IF_ID == rd_ID_EX) && (!rs1_Zero);
-    assign rs1_EX_MEM_Hazard = RegWR_EX_MEM && (rs1_IF_ID == rd_EX_MEM) && (!rs1_Zero);
-    assign rs1_MEM_WB_Hazard = RegWR_MEM_WB && (rs1_IF_ID == rd_MEM_WB) && (!rs1_Zero);
+    assign rs1_Zero = ( rs1_IF_ID == 0 );
+    assign rs1_ID_EX_Hazard = ( RegWR_ID_EX && (rs1_IF_ID == rd_ID_EX) && (!rs1_Zero) );
+    assign rs1_EX_MEM_Hazard = ( RegWR_EX_MEM && (rs1_IF_ID == rd_EX_MEM) && (!rs1_Zero) );
+    assign rs1_MEM_WB_Hazard = ( RegWR_MEM_WB && (rs1_IF_ID == rd_MEM_WB) && (!rs1_Zero) );
     
     wire rs2_Zero;
-    wire rs2_IF_ID_Hazard;
+    wire rs2_ID_EX_Hazard;
     wire rs2_EX_MEM_Hazard;
     wire rs2_MEM_WB_Hazard;
     
-    assign rs2_Zero = rs2_IF_ID == 0;
-    assign rs2_IF_ID_Hazard = RegWR_ID_EX && (rs2_IF_ID == rd_ID_EX) && (!rs2_Zero);
-    assign rs2_EX_MEM_Hazard = RegWR_EX_MEM && (rs2_IF_ID == rd_EX_MEM) && (!rs2_Zero);
-    assign rs2_MEM_WB_Hazard = RegWR_MEM_WB && (rs2_IF_ID == rd_MEM_WB) && (!rs2_Zero);
+    assign rs2_Zero = ( rs2_IF_ID == 0 );
+    assign rs2_ID_EX_Hazard = ( RegWR_ID_EX && (rs2_IF_ID == rd_ID_EX) && (!rs2_Zero) );
+    assign rs2_EX_MEM_Hazard = ( RegWR_EX_MEM && (rs2_IF_ID == rd_EX_MEM) && (!rs2_Zero) );
+    assign rs2_MEM_WB_Hazard = ( RegWR_MEM_WB && (rs2_IF_ID == rd_MEM_WB) && (!rs2_Zero) );
     
     wire rs1_Hazard;
     wire rs2_Hazard;
     
-    assign rs1_Hazard = (!rs1RD) ? 0 : (rs1_IF_ID_Hazard || rs1_EX_MEM_Hazard || rs1_MEM_WB_Hazard);
-    assign rs2_Hazard = (!rs2RD) ? 0 : (rs2_IF_ID_Hazard || rs2_EX_MEM_Hazard || rs2_MEM_WB_Hazard);
+//    assign rs1_Hazard = (rs1RD) ? (rs1_ID_EX_Hazard || rs1_EX_MEM_Hazard || rs1_MEM_WB_Hazard) : 0;
+    assign rs1_Hazard = (rs1RD) ? (rs1_ID_EX_Hazard && RegSrc_ID_EX == 3'b010) : 0;
+//    assign rs2_Hazard = (rs2RD) ? (rs2_ID_EX_Hazard || rs2_EX_MEM_Hazard || rs2_MEM_WB_Hazard) : 0;
+    assign rs2_Hazard = (rs2RD) ? (rs2_ID_EX_Hazard && RegSrc_ID_EX == 3'b010) : 0;
+    
+    assign rs1_forward = (rs1_ID_EX_Hazard) ? ( (RegSrc_ID_EX != 3'b010) ? 2'b00 : 2'b11) : 
+                            (rs1_EX_MEM_Hazard) ? 2'b00 : 
+                            (rs1_MEM_WB_Hazard) ? 2'b00 : 2'b11 ;
+                            
+    assign rs1_select = (rs1_ID_EX_Hazard) ? ( (RegSrc_ID_EX != 3'b010) ? 1'b1 : 1'b0) : 
+                            (rs1_EX_MEM_Hazard) ? 1'b1 : 
+                            (rs1_MEM_WB_Hazard) ? 1'b1 : 1'b0 ;
+                                
+    assign rs2_forward = (rs2_ID_EX_Hazard) ? ( (RegSrc_ID_EX != 3'b010) ? 2'b00 : 2'b11) : 
+                            (rs2_EX_MEM_Hazard) ? 2'b00 : 
+                            (rs2_MEM_WB_Hazard) ? 2'b00 : 2'b11 ;
+
+    assign rs2_select = (rs2_ID_EX_Hazard) ? ( (RegSrc_ID_EX != 3'b010) ? 1'b1 : 1'b0) : 
+                            (rs2_EX_MEM_Hazard) ? 1'b1 : 
+                            (rs2_MEM_WB_Hazard) ? 1'b1 : 1'b0 ;
     
     assign nop_ID_EX = (rs1_Hazard || rs2_Hazard || pcSrc);
     assign pause_ID_EX = 0;
