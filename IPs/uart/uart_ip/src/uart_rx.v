@@ -98,7 +98,7 @@ module uart_rx(
                 R_state         <= 4'd0 ;
                 R_para_data_reg <= 8'd0 ;
                 O_bps_rx_clk_en <= 1'b0 ;
-                O_rs232_rxd_reg <= 1'b0 ;
+                O_rs232_rxd_reg <= 1'b1 ;
             end 
         else if(R_receiving && !O_rx_done)
             begin
