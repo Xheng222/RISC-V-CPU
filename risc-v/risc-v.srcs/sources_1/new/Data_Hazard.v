@@ -67,16 +67,16 @@ module Data_Hazard(
     assign rs2_Hazard = (rs2RD) ? (rs2_ID_EX_Hazard && RegSrc_ID_EX == 3'b010) : 0;
     
     assign rs1_forward = (rs1_ID_EX_Hazard) ? ( (RegSrc_ID_EX != 3'b010) ? 2'b00 : 2'b11) : 
-                            (rs1_EX_MEM_Hazard) ? 2'b00 : 
-                            (rs1_MEM_WB_Hazard) ? 2'b00 : 2'b11 ;
+                            (rs1_EX_MEM_Hazard) ? 2'b01 : 
+                            (rs1_MEM_WB_Hazard) ? 2'b10 : 2'b11 ;
                             
     assign rs1_select = (rs1_ID_EX_Hazard) ? ( (RegSrc_ID_EX != 3'b010) ? 1'b1 : 1'b0) : 
                             (rs1_EX_MEM_Hazard) ? 1'b1 : 
                             (rs1_MEM_WB_Hazard) ? 1'b1 : 1'b0 ;
                                 
     assign rs2_forward = (rs2_ID_EX_Hazard) ? ( (RegSrc_ID_EX != 3'b010) ? 2'b00 : 2'b11) : 
-                            (rs2_EX_MEM_Hazard) ? 2'b00 : 
-                            (rs2_MEM_WB_Hazard) ? 2'b00 : 2'b11 ;
+                            (rs2_EX_MEM_Hazard) ? 2'b01 : 
+                            (rs2_MEM_WB_Hazard) ? 2'b10 : 2'b11 ;
 
     assign rs2_select = (rs2_ID_EX_Hazard) ? ( (RegSrc_ID_EX != 3'b010) ? 1'b1 : 1'b0) : 
                             (rs2_EX_MEM_Hazard) ? 1'b1 : 
