@@ -4,6 +4,7 @@ risc-v.cache
 risc-v.hw
 risc-v.ip_user_files
 risc-v.sim
+risc-v.runs
 *.jou
 *.log
 *.str
