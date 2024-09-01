@@ -7,7 +7,9 @@ module DRAM(
     input [2:0] MemRWType,
     input [31:0] ALUoutput,
     input [31:0] rd2,
-    output [31:0] MemData
+    output [31:0] MemData,
+    output light_En,
+    output [7:0] light_Data
     );
 
     reg [7:0] dram [1023:0];
@@ -48,5 +50,11 @@ module DRAM(
                       32'b0
                      )
                      : 32'b0;
+                     
+    assign light_En = (ALUoutput == 32'h0402 && MemWR) ? 1 : 0;
+    assign light_Data = rd2[7:0];
+
+    
+    
 
 endmodule

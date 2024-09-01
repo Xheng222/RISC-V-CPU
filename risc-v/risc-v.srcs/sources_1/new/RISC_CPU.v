@@ -1,7 +1,9 @@
 `timescale 1ns / 1ps
 module RISC_CPU(
     input clk,
-    input rst
+    input rst,
+    output [6:0] O_led,
+    output [1:0] O_px
     );
     
     // IF State //
@@ -254,6 +256,8 @@ module RISC_CPU(
     
     // DRAM
     wire [31:0] MemData;
+    wire light_En;
+    wire [7:0] light_Data;
 
     DRAM dram(
         .clk(clk),
@@ -262,7 +266,9 @@ module RISC_CPU(
         .MemRWType(MemRWType_EX_MEM),
         .ALUoutput(ALUoutput_EX_MEM),
         .rd2(rs2Data_EX_MEM),
-        .MemData(MemData)
+        .MemData(MemData),
+        .light_En(light_En),
+        .light_Data(light_Data)
     );
     
     // WB select    
@@ -319,6 +325,16 @@ module RISC_CPU(
         .nop_MEM_WB(nop_MEM_WB),
         .pause_MEM_WB(pause_MEM_WB)
     );
- 
+    
+
+   
+    light_show light_show_1(
+        .I_clk(clk),
+        .I_rst_n(rst),
+        .I_show_num(light_Data),
+        .light_En(light_En),
+        .O_led(O_led),
+        .O_px(O_px)
+    );
        
 endmodule

@@ -4,10 +4,12 @@ module RISC_CPU_tb;
 
     reg clk;
     reg rst;
+    wire [6:0] O_led;
     
     RISC_CPU risc_cpu(
         .clk(clk),
-        .rst(rst)
+        .rst(rst),
+        .O_led(O_led)
     );
     
     always #5 clk = ~clk;
