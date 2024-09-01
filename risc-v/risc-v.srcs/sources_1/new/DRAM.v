@@ -7,10 +7,13 @@ module DRAM(
     input [2:0] MemRWType,
     input [31:0] ALUoutput,
     input [31:0] rd2,
-    output [31:0] MemData
+    output [31:0] MemData,
+    output [7:0] show_num
     );
 
     reg [7:0] dram [1023:0];
+    
+    reg [7:0] Reg_show_num;
 
     wire [31:0] data_8;
     wire [31:0] data_16;
@@ -19,6 +22,7 @@ module DRAM(
     wire [31:0] data_32;
     
     initial begin
+        Reg_show_num = 0;
         $readmemb("../../../../risc-v.srcs/sources_1/new/DRAM.txt", dram);
     end
 
@@ -31,7 +35,12 @@ module DRAM(
     always @(posedge clk) begin
         if(MemWR) begin
             case(MemRWType)
-                3'b000 : dram[ALUoutput] <= rd2[7:0]; //8 bit
+                3'b000 : begin 
+                    if (ALUoutput != 32'h0402)
+                        dram[ALUoutput] <= rd2[7:0]; //8 bit
+                    else
+                        Reg_show_num <= rd2[7:0];
+                end
                 3'b001 : begin dram[ALUoutput + 1] <= rd2[7:0]; dram[ALUoutput] <= rd2[15:8]; end //16 bit?
                 3'b010 : begin dram[ALUoutput + 3] <= rd2[7:0]; dram[ALUoutput + 2] <= rd2[15:8]; dram[ALUoutput + 1] <= rd2[23:16]; dram[ALUoutput] <= rd2[31:24]; end //32 bit
                 default: dram[ALUoutput] <= 8'b0; 
@@ -48,5 +57,7 @@ module DRAM(
                       32'b0
                      )
                      : 32'b0;
+                     
+    assign show_num = Reg_show_num;
 
 endmodule

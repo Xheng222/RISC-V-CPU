@@ -1,7 +1,13 @@
 `timescale 1ns / 1ps
 module RISC_CPU(
     input clk,
-    input rst
+    input rst,    
+    input rx_done,
+    input WR_Src,  // 1 - IRAM; 0 - DRAM
+    input [31:0] addr,
+    input [7:0] data,
+    
+    output [7:0] show_num
     );
     
     // IF State //
@@ -29,10 +35,24 @@ module RISC_CPU(
         .nop(nop_pc),
         .pause(pause_pc),
         .npc(npc),
+        .pc(pc)
+    );
+    
+    wire IRAMWR;
+    wire clk_rst;
+    
+    assign IRAMWR = (!rst && WR_Src);
+    assign clk_rst = (IRAMWR) ? rx_done : clk;
+   
+    IRAM iram(
+        .clk(clk_rst),
+        .IRAMWR(IRAMWR),
+        .addr(addr),
+        .instrWR(data),
         .pc(pc),
         .instr(instr)
     );
-    
+     
     // IF_ID
     wire [6:0] opcode;
     wire [2:0] funct3;
@@ -94,8 +114,6 @@ module RISC_CPU(
         .rs1RD(rs1RD),
         .rs2RD(rs2RD)
     );
-    
-    
     
     // RegFile
     wire [31:0] rs1Data;
@@ -276,16 +294,33 @@ module RISC_CPU(
     // MEM State //
     
     // DRAM
-    wire [31:0] MemData;
-
+    wire IRAMWR;
+    wire clk_dram;
+    wire MemRD_rst;
+    wire MemWR_rst;  
+    wire [2:0] MemRWType_rst;  
+    wire [31:0] DramAddr;
+    wire [31:0] DataWR;
+    
+    assign DRAMWR = (!rst && !WR_Src);
+    assign clk_dram = (DRAMWR) ? rx_done : clk;
+    assign MemRD_rst = (DRAMWR) ? 0 : MemRD_EX_MEM;
+    assign MemWR_rst = (DRAMWR) ? 1 : MemWR_EX_MEM;
+    assign MemRWType_rst = (DRAMWR) ? 3'b000 : MemRWType_EX_MEM;
+    assign  DramAddr = (DRAMWR) ? addr : ALUoutput_EX_MEM;
+    assign  DataWR = (DRAMWR) ? data : rs2Data_EX_MEM;
+    
+    wire [31:0] MemData;    
     DRAM dram(
-        .clk(clk),
-        .MemRD(MemRD_EX_MEM),
-        .MemWR(MemWR_EX_MEM),
-        .MemRWType(MemRWType_EX_MEM),
-        .ALUoutput(ALUoutput_EX_MEM),
-        .rd2(rs2Data_EX_MEM),
-        .MemData(MemData)
+        .clk(clk_dram),
+        .MemRD(MemRD_rst),
+        .MemWR(MemWR_rst),
+        .MemRWType(MemRWType_rst),
+        .ALUoutput(DramAddr),
+        .rd2(DataWR),
+        .MemData(MemData),
+        
+        .show_num(show_num)
     );
     
     // WB select    
