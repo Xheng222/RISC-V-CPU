@@ -359,7 +359,7 @@ module RISC_CPU(
         .ALUoutput(ALUoutput),
         .imm_ID_EX(imm_ID_EX),
         .pc_ID_EX(pc_ID_EX),
-        .rdData_MEM(MemData),
+        .rdData_MEM(rdData),
         .rdData_WB(RegData_MEM_WB),
         .rs1_forward(rs1_forward),
         .rs2_forward(rs2_forward),

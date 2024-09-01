@@ -15,7 +15,7 @@ module Forward(
     );
     
     
-    wire EX_data;
+    wire [31:0] EX_data;
     assign EX_data = RegSrc_ID_EX == 3'b000 ? ALUoutput : // ALU
                 RegSrc_ID_EX == 3'b001 ? pc_ID_EX + 32'b100 : // pc + 4
                 RegSrc_ID_EX == 3'b011 ? imm_ID_EX : // imm
