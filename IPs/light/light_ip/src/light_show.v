@@ -20,21 +20,21 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module light_show(                  //¶¨ÒåÊäÈëÊä³ö¶Ë¿Ú
-    input       I_clk,              //ÏµÍ³Ê±ÖÓ
-    input       I_rst_n,            //¸´Î»ÐÅºÅ
-    input       [7:0] I_show_num,   //ÊäÈë8-bitÊý¾Ý
-//    input       light_En,           //ÊýÂë¹ÜÊ¹ÄÜ
-    output      [6:0] O_led,        //Æß¶ÎÊýÂë¹Ü¶ÎÑ¡ÐÅºÅ
-    output      [1:0] O_px          //Æß¶ÎÊýÂë¹ÜÎ»Ñ¡ÐÅºÅ
+module light_show(                  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½
+    input       I_clk,              //ÏµÍ³Ê±ï¿½ï¿½
+    input       I_rst_n,            //ï¿½ï¿½Î»ï¿½Åºï¿½
+    input       [7:0] I_show_num,   //ï¿½ï¿½ï¿½ï¿½8-bitï¿½ï¿½ï¿½ï¿½
+//    input       light_En,           //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
+    output      [6:0] O_led,        //ï¿½ß¶ï¿½ï¿½ï¿½ï¿½ï¿½Ü¶ï¿½Ñ¡ï¿½Åºï¿½
+    output      [1:0] O_px          //ï¿½ß¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»Ñ¡ï¿½Åºï¿½
     );
     
     //parameter   C_COUNTER_NUM = 1000000;    
-    parameter   C_COUNTER_NUM = 1000000; //¼ÆÊýÆ÷·åÖµ
+    parameter   C_COUNTER_NUM = 100000; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
     
-    reg  [3:0]  R_temp;             //µ±Ç°ÏÔÊ¾µÄ4-bitÊý¾Ý¼Ä´æÆ÷                
-    reg  [1:0]  R_px_temp;          //¶ÎÑ¡ÐÅºÅ¼Ä´æÆ÷
-    reg  [32:0] R_counter;          //¼ÆÊýÆ÷¼Ä´æÆ÷
+    reg  [3:0]  R_temp;             //ï¿½ï¿½Ç°ï¿½ï¿½Ê¾ï¿½ï¿½4-bitï¿½ï¿½ï¿½Ý¼Ä´ï¿½ï¿½ï¿½                
+    reg  [1:0]  R_px_temp;          //ï¿½ï¿½Ñ¡ï¿½ÅºÅ¼Ä´ï¿½ï¿½ï¿½
+    reg  [32:0] R_counter;          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
     
     wire [7:0]  W_show_num;         
     
@@ -45,20 +45,20 @@ module light_show(                  //¶¨ÒåÊäÈëÊä³ö¶Ë¿Ú
     always@(posedge I_clk or negedge I_rst_n)
     begin
         if(!I_rst_n)          
-        begin       //¸´Î»´¦Àí
-            R_px_temp <= 2'b01;
-            R_temp <= W_show_num[3:0];
+        begin       //ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½
+            R_px_temp <= 2'b11;
+            R_temp <= 4'b0;
             R_counter <= 0;
         end
         else begin
             if(R_px_temp == 2'b01 && R_counter >= C_COUNTER_NUM)
-            begin       //¸ß4-bitÊý¾Ý
+            begin       //ï¿½ï¿½4-bitï¿½ï¿½ï¿½ï¿½
                 R_temp <= W_show_num[7:4];
                 R_px_temp <= 2'b10;
                 R_counter <= 0;
             end
             else if(R_px_temp == 2'b10 && R_counter >= C_COUNTER_NUM)
-            begin       //µÍ4-bitÊý¾Ý
+            begin       //ï¿½ï¿½4-bitï¿½ï¿½ï¿½ï¿½
                 R_temp <= W_show_num[3:0];
                 R_px_temp <= 2'b01;
                 R_counter <= 0;
