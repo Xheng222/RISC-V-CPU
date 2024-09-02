@@ -83,7 +83,7 @@ module uart_top(
     (
         .I_clk              (I_clk              ), // 系统100MHz时钟
         .I_rst_n            (I_rst_n            ), // 系统全局复位
-        .I_rx_start         (I_rx_start         ), // 接收使能信号
+        .I_rx_start         (1'b1               ), // 接收使能信号
         .I_bps_rx_clk       (W_bps_rx_clk       ), // 接收波特率时钟
         .I_rs232_rxd        (I_rs232_rxd        ), // 接收的串行数据，在硬件上与串口相连  
         .O_bps_rx_clk_en    (W_bps_rx_clk_en    ), // 波特率时钟使能信号
@@ -92,12 +92,19 @@ module uart_top(
         .O_rs232_rxd        (O_rs232_txd        )
     ); 
     
+    
+    
+    always @(I_rx_start) //交换写内存和写指令后，清零
+    begin
+        data_counter <= 0;
+    end
+    
     always @(posedge I_clk or negedge I_rst_n)
     begin
         if(!I_rst_n)
         begin
 //            R_led_reg <= 0;
-            data_counter <= 0;
+//            data_counter <= 0;
         end
         else if(W_rx_done)//接收到一个字节
         begin
