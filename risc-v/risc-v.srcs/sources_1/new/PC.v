@@ -17,7 +17,7 @@ module PC(
 //            cnt <= 0;
         end
         else begin
-            if (!nop && !pause) begin
+            if (!pause) begin
                     pc <= npc;                
             end
 //            else begin

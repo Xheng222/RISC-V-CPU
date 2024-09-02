@@ -10,6 +10,20 @@ module RISC_CPU(
     output [7:0] show_num
     );
     
+    //  1 / 4 clk
+    
+    reg clk_slow = 0;
+    integer i = 0;
+    always @(posedge clk) begin
+        if (i < 1)
+            i = i + 1;
+        else begin
+            i = 0;
+            clk_slow = ~clk_slow;
+        end
+    end
+    
+
     // IF State //
     
     // PC
@@ -22,6 +36,7 @@ module RISC_CPU(
     wire nop_pc;
     wire pause_pc;
     
+    
     PC_Control pc_control(
         .pc(pc),
         .pcSrc(pcSrc),
@@ -30,7 +45,7 @@ module RISC_CPU(
     );
     
     PC pc_1(
-        .clk(clk),
+        .clk(clk_slow),
         .rst(rst),
         .nop(nop_pc),
         .pause(pause_pc),
@@ -42,7 +57,7 @@ module RISC_CPU(
     wire clk_rst;
     
     assign IRAMWR = (!rst && WR_Src);
-    assign clk_rst = (IRAMWR) ? rx_done : clk;
+    assign clk_rst = (rst) ? clk_slow : rx_done;
    
     IRAM iram(
         .clk(clk_rst),
@@ -65,7 +80,7 @@ module RISC_CPU(
     wire pause_IF_ID;
     
     IF_ID if_id(
-        .clk(clk),
+        .clk(clk_slow),
         .rst(rst),
         .nop(nop_IF_ID),
         .pause(pause_IF_ID),
@@ -123,7 +138,7 @@ module RISC_CPU(
     wire [31:0] RegData_MEM_WB;
     
     RegFile regfile(
-        .clk(clk),
+        .clk(clk_slow),
         .rst(rst),
         .rs1(rs1),
         .rs2(rs2),
@@ -185,7 +200,7 @@ module RISC_CPU(
     wire pause_ID_EX;
 
     ID_EX id_ex(
-        .clk(clk),
+        .clk(clk_slow),
         .rst(rst),
         .nop(nop_ID_EX),
         .pause(pause_ID_EX),
@@ -261,41 +276,40 @@ module RISC_CPU(
     wire RegWR_EX_MEM;
     wire [2:0] RegSrc_EX_MEM;
     wire [4:0] rd_EX_MEM;
-    wire nop_EX_MEM;
-    wire pause_EX_MEM;
+//    wire nop_EX_MEM;
+//    wire pause_EX_MEM;
+    wire [31:0] EXData;
+    wire [31:0] EXData_EX_MEM;
 
     EX_MEM ex_mem(
-        .clk(clk),
+        .clk(clk_slow),
         .rst(rst),
-        .nop(nop_EX_MEM),
-        .pause(pause_EX_MEM),
-        .ALUoutput(ALUoutput),
+//        .nop(nop_EX_MEM),
+//        .pause(pause_EX_MEM),
         .MemRD(MemRD_ID_EX),
         .MemWR(MemWR_ID_EX),
         .MemRWType(MemRWType_ID_EX),
         .RegWR(RegWR_ID_EX),
         .RegSrc(RegSrc_ID_EX),
-        .imm(imm_ID_EX),
         .rd2(rs2Data_ID_EX),
         .rd(rd_ID_EX),
-        .pc(pc_ID_EX),
-        .ALUoutput_EX_MEM(ALUoutput_EX_MEM),
+        .EXData(EXData),
+        
         .MemRD_out(MemRD_EX_MEM),
         .MemWR_out(MemWR_EX_MEM),
         .MemRWType_out(MemRWType_EX_MEM),
         .RegWR_out(RegWR_EX_MEM),
         .RegSrc_out(RegSrc_EX_MEM),
-        .imm_out(imm_EX_MEM),
         .rd2_out(rs2Data_EX_MEM),
         .rd_out(rd_EX_MEM),
-        .pc_out(pc_EX_MEM)  
+        .EXData_out(EXData_EX_MEM)
     );
     
     // MEM State //
     
     // DRAM
-    wire IRAMWR;
-    wire clk_dram;
+    wire DRAMWR;
+    wire clk_Dram;
     wire MemRD_rst;
     wire MemWR_rst;  
     wire [2:0] MemRWType_rst;  
@@ -303,16 +317,17 @@ module RISC_CPU(
     wire [31:0] DataWR;
     
     assign DRAMWR = (!rst && !WR_Src);
-    assign clk_dram = (DRAMWR) ? rx_done : clk;
+    assign clk_Dram = (DRAMWR) ? rx_done : clk;
     assign MemRD_rst = (DRAMWR) ? 0 : MemRD_EX_MEM;
     assign MemWR_rst = (DRAMWR) ? 1 : MemWR_EX_MEM;
     assign MemRWType_rst = (DRAMWR) ? 3'b000 : MemRWType_EX_MEM;
-    assign  DramAddr = (DRAMWR) ? addr : ALUoutput_EX_MEM;
+    assign  DramAddr = (DRAMWR) ? addr : EXData_EX_MEM;
     assign  DataWR = (DRAMWR) ? data : rs2Data_EX_MEM;
     
     wire [31:0] MemData;    
     DRAM dram(
-        .clk(clk_dram),
+        .clk(clk_Dram),
+        .clk_slow(clk_rst),
         .MemRD(MemRD_rst),
         .MemWR(MemWR_rst),
         .MemRWType(MemRWType_rst),
@@ -327,23 +342,21 @@ module RISC_CPU(
     wire [31:0] rdData;
     
     Rd_Select rd_select(
-        .ALUoutput(ALUoutput_EX_MEM),
-        .imm(imm_EX_MEM),
-        .pc(pc_EX_MEM),
+        .EXData(EXData_EX_MEM),
         .MemData(MemData),
         .RegSrc(RegSrc_EX_MEM),
         .rdData(rdData)
     );
-    
+
     // WB State //
-    wire nop_MEM_WB;
-    wire pause_MEM_WB;
+//    wire nop_MEM_WB;
+//    wire pause_MEM_WB;
     
     MEM_WB mem_wb(
-        .clk(clk),
+        .clk(clk_slow),
         .rst(rst),
-        .nop(nop_MEM_WB),
-        .pause(pause_MEM_WB),
+//        .nop(nop_MEM_WB),
+//        .pause(pause_MEM_WB),
         .RegWR(RegWR_EX_MEM),
         .rd(rd_EX_MEM),
         .rdData(rdData),
@@ -400,6 +413,7 @@ module RISC_CPU(
         .rs2_forward(rs2_forward),
         
         .rs1_forward_data(rs1_forward_data),
-        .rs2_forward_data(rs2_forward_data)
+        .rs2_forward_data(rs2_forward_data),
+        .EXData(EXData)
     );
 endmodule

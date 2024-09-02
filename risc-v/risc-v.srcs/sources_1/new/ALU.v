@@ -1,23 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2024/08/29 11:09:13
-// Design Name: 
-// Module Name: ALU
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
 module ALU(
   input  [3:0] ALUop,
@@ -66,20 +47,5 @@ assign ALUoutput = (ALUop == 4'b0000) ? ADD :
                     (ALUop == 4'b1100) ? SLL : 
                     (ALUop == 4'b1101) ? SRL : 
                     (ALUop == 4'b1110) ? SRA : data1;
-//always @(*) begin
-//    case(ALUop)
-//        4'b0000: ALUoutput = ADD;
-//        4'b0011: ALUoutput = SUB;
-//        4'b0100: ALUoutput = AND;
-//        4'b0101: ALUoutput = OR;
-//        4'b0110: ALUoutput = XOR;
-//        4'b1000: ALUoutput = SLT;
-//        4'b1001: ALUoutput = SLTU;
-//        4'b1100: ALUoutput = SLL;
-//        4'b1101: ALUoutput = SRL;
-//        4'b1110: ALUoutput = SRA;
-//        default: ALUoutput = data1; 
-//    endcase
-//end
 
 endmodule

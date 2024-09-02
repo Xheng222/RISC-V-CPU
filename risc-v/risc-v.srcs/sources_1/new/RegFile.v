@@ -17,8 +17,8 @@ module RegFile(
     integer i;
     always @(posedge clk or negedge rst) begin
         if(!rst) begin
-            for(i=0;i<32;i=i+1) begin
-                regs[i] <= 114514;
+            for(i = 0;i < 32;i = i + 1) begin
+                regs[i] <= 0;
             end
         end
         else if(RegWR) begin

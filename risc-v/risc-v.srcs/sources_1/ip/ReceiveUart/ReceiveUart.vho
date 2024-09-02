@@ -46,7 +46,7 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: xilinx.com:user:uart_top:3.0
+-- IP VLNV: xilinx.com:user:uart_top:4.0
 -- IP Revision: 1
 
 -- The following code must appear in the VHDL architecture header.

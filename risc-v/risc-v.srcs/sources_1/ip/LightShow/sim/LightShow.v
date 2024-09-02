@@ -46,27 +46,39 @@
 // 
 // DO NOT MODIFY THIS FILE.
 
-// IP VLNV: xilinx.com:user:uart_top:4.0
-// IP Revision: 1
 
-// The following must be inserted into your Verilog file for this
-// core to be instantiated. Change the instance name and port connections
-// (in parentheses) to your own signal names.
+// IP VLNV: xilinx.com:user:light_show:1.0
+// IP Revision: 2
 
-//----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
-ReceiveUart your_instance_name (
-  .I_clk(I_clk),                    // input wire I_clk
-  .I_rst_n(I_rst_n),                // input wire I_rst_n
-  .I_rs232_rxd(I_rs232_rxd),        // input wire I_rs232_rxd
-  .I_rx_start(I_rx_start),          // input wire I_rx_start
-  .O_rs232_txd(O_rs232_txd),        // output wire O_rs232_txd
-  .O_rx_Data(O_rx_Data),            // output wire [7 : 0] O_rx_Data
-  .O_rx_done(O_rx_done),            // output wire O_rx_done
-  .O_data_counter(O_data_counter)  // output wire [31 : 0] O_data_counter
+`timescale 1ns/1ps
+
+(* IP_DEFINITION_SOURCE = "package_project" *)
+(* DowngradeIPIdentifiedWarnings = "yes" *)
+module LightShow (
+  I_clk,
+  I_rst_n,
+  I_show_num,
+  O_led,
+  O_px
 );
-// INST_TAG_END ------ End INSTANTIATION Template ---------
 
-// You must compile the wrapper file ReceiveUart.v when simulating
-// the core, ReceiveUart. When compiling the wrapper file, be sure to
-// reference the Verilog simulation library.
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME I_clk, ASSOCIATED_RESET I_rst_n, FREQ_HZ 100000000, PHASE 0.000, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 I_clk CLK" *)
+input wire I_clk;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME I_rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 I_rst_n RST" *)
+input wire I_rst_n;
+input wire [7 : 0] I_show_num;
+output wire [6 : 0] O_led;
+output wire [1 : 0] O_px;
 
+  light_show #(
+    .C_COUNTER_NUM(1000000)
+  ) inst (
+    .I_clk(I_clk),
+    .I_rst_n(I_rst_n),
+    .I_show_num(I_show_num),
+    .O_led(O_led),
+    .O_px(O_px)
+  );
+endmodule

@@ -19,6 +19,16 @@ module Top(
     wire [7:0] data;
     wire [7:0] show_num;
     
+//    reg clk_slow = 0;
+//    integer i = 0;
+//    always @(posedge clk) begin
+//        if (i < 1000000)
+//            i = i + 1;
+//        else begin
+//            i = 0;
+//            clk_slow = ~clk_slow;
+//        end
+//    end
 
     RISC_CPU risc_cpu(
         .clk(clk),
@@ -32,17 +42,14 @@ module Top(
     );
     
     wire rst_n;
-    wire rx_start;
 
     assign rst_n = ~rst;
-    assign rx_start = 1;    
-    
     
     ReceiveUart receive_uart(
         .I_clk(clk),
         .I_rst_n(rst_n),
         .I_rs232_rxd(rs232_rxd),
-        .I_rx_start(rx_start),
+        .I_rx_start(WR_Src),
         
         .O_rs232_txd(rs232_txd),
         .O_rx_done(rx_done),

@@ -53,7 +53,7 @@ module ID_EX(
             rd_out <= 5'b0;
         end
         else begin 
-            if (!nop && !pause) begin
+            if (!nop) begin
                 BranchSrc_out <= BranchSrc;
                 imm_out <= imm;
                 BranchEn_out <= BranchEn;
