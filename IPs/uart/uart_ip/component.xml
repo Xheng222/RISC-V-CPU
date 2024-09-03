@@ -3,7 +3,7 @@
   <spirit:vendor>xilinx.com</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>uart_top</spirit:name>
-  <spirit:version>4.0</spirit:version>
+  <spirit:version>5.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>I_rst_n</spirit:name>
@@ -64,7 +64,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>0bb01017</spirit:value>
+            <spirit:value>35da709a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -80,7 +80,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>16bcdb8e</spirit:value>
+            <spirit:value>eb4eea8f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -95,7 +95,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>2762bf3c</spirit:value>
+            <spirit:value>04fca4c4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -257,7 +257,7 @@
       <spirit:file>
         <spirit:name>src/uart_top.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_12244f7b</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_9f978ff7</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -293,14 +293,14 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/uart_top_v4_0.tcl</spirit:name>
+        <spirit:name>xgui/uart_top_v5_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_f64a5dae</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
-  <spirit:description>uart_top_v4_0</spirit:description>
+  <spirit:description>uart_top_v5</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
@@ -337,33 +337,32 @@
       <xilinx:taxonomies>
         <xilinx:taxonomy>/UserIP</xilinx:taxonomy>
       </xilinx:taxonomies>
-      <xilinx:displayName>uart_top_v4_0</xilinx:displayName>
+      <xilinx:displayName>uart_top_v5</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:coreRevision>1</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>xilinx.com:user:uart_top:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2024-09-02T03:15:35Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2024-09-03T07:19:38Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e8f5a52_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@38349433_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@c1e7193_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@b82af45_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d0bccf7_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@21a12880_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6493761a_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@c473149_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@27f5a375_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c28a642_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@26859d01_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e853984_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@596432d9_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2fc724fd_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4dd58842_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79fc1066_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3879066f_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a967b22_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b46994a_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bf30a70_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@590b162c_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78fac99c_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f66d636_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c13eea4_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1efd3c07_ARCHIVE_LOCATION">e:/vivado_projects/port_light_control/sources_1/ip</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="310f65b7"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="68ffdef0"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="2592d36c"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="b9c7c30e"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="f8878032"/>
     </xilinx:packagingInfo>
