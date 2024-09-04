@@ -35,7 +35,7 @@ module Top(
     end
 
     RISC_CPU risc_cpu(
-        .clk(clk_slow),
+        .clk(clk),
         .rst(rst),
         .rx_done(rx_done),
         .WR_Src(WR_Src),

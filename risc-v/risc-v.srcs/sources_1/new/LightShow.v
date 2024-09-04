@@ -25,12 +25,12 @@ module LightShow(
                 R_px_temp <= 4'b0001;
                 R_counter <= 0;
         end
-        else if(R_px_temp <= 4'b0001 && R_counter >= C_COUNTER_NUM) begin
+        else if(R_px_temp == 4'b0001 && R_counter >= C_COUNTER_NUM) begin
                 R_temp <= W_show_num[7:4];
                 R_px_temp <= 4'b0010;
                 R_counter <= 0;
         end
-        else if(R_px_temp <= 4'b0010 && R_counter >= C_COUNTER_NUM) begin
+        else if(R_px_temp == 4'b0010 && R_counter >= C_COUNTER_NUM) begin
                 R_temp <= W_show_num[11:8];
                 R_px_temp <= 4'b0100;
                 R_counter <= 0;
