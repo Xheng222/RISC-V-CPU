@@ -47,12 +47,12 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:user:uart_top:4.0
+// IP VLNV: xilinx.com:user:uart_top:5.0
 // IP Revision: 1
 
 (* X_CORE_INFO = "uart_top,Vivado 2019.2" *)
 (* CHECK_LICENSE_TYPE = "ReceiveUart,uart_top,{}" *)
-(* CORE_GENERATION_INFO = "ReceiveUart,uart_top,{x_ipProduct=Vivado 2019.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=uart_top,x_ipVersion=4.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* CORE_GENERATION_INFO = "ReceiveUart,uart_top,{x_ipProduct=Vivado 2019.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=uart_top,x_ipVersion=5.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* IP_DEFINITION_SOURCE = "package_project" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module ReceiveUart (

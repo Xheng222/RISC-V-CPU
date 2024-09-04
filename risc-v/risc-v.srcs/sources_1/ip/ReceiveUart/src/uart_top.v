@@ -99,19 +99,12 @@ module uart_top(
         data_counter <= 0;
     end
     
-    always @(posedge I_clk or negedge I_rst_n)
+    always @(negedge W_rx_done)
     begin
-        if(!I_rst_n)
-        begin
-//            R_led_reg <= 0;
-//            data_counter <= 0;
-        end
-        else if(W_rx_done)//接收到一个字节
-        begin
+
 //            R_led_reg <= rx_Data;
             data_counter <= data_counter + 1;
 //            R_led_reg <= data_counter;
-        end
     end
     
 //    assign led[0] = R_led[0];

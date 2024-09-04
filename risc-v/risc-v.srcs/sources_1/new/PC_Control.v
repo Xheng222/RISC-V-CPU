@@ -7,7 +7,9 @@ module PC_Control(
     output [31:0] npc
     );
     
-    assign npc = (pcSrc == 1) ? jpc : pc + 4;
+    wire [31:0] npc_temp;
+    assign npc_temp = (pcSrc == 1) ? jpc : pc + 4;
+    assign npc = (npc_temp <= 32'd1020) ? npc_temp : 32'd1020;
     
 //    always @(*) begin
 //        if (pcSrc) begin

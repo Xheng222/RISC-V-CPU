@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2700185 Thu Oct 24 18:46:05 MDT 2019
--- Date        : Mon Sep  2 11:38:50 2024
+-- Date        : Tue Sep  3 15:25:00 2024
 -- Host        : LAPTOP-U0UTG14L running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top ReceiveUart -prefix
---               ReceiveUart_ ReceiveUart_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               g:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/ip/ReceiveUart/ReceiveUart_sim_netlist.vhdl
 -- Design      : ReceiveUart
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -21,6 +21,8 @@ entity ReceiveUart_baudrate_gen is
     I_clk : in STD_LOGIC;
     \R_bps_rx_cnt_reg[12]_1\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ReceiveUart_baudrate_gen : entity is "baudrate_gen";
 end ReceiveUart_baudrate_gen;
 
 architecture STRUCTURE of ReceiveUart_baudrate_gen is
@@ -455,6 +457,8 @@ entity ReceiveUart_uart_rx is
     I_rst_n : in STD_LOGIC;
     \R_para_data_reg_reg[7]_0\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ReceiveUart_uart_rx : entity is "uart_rx";
 end ReceiveUart_uart_rx;
 
 architecture STRUCTURE of ReceiveUart_uart_rx is
@@ -1210,6 +1214,8 @@ entity ReceiveUart_uart_top is
     O_rx_done : out STD_LOGIC;
     O_data_counter : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of ReceiveUart_uart_top : entity is "uart_top";
 end ReceiveUart_uart_top;
 
 architecture STRUCTURE of ReceiveUart_uart_top is

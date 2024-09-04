@@ -21,25 +21,26 @@ module Top_tb;
         .rs232_txd(rs232_txd),
         
         // Light
-        .O_led(O_led),
-        .O_px(O_px)
+        .O_led_1(O_led),
+        .O_px_1(O_px)
     );
     
     always #5 clk = ~clk;
+
     initial begin
         clk = 1;
-        rst = 1;
+        rst = 0;
         WR_Src = 0;
         rs232_rxd = 1;
         
         #1000
-        rst = 0;
+        rst = 1;
 
         
         // 等待一段时间开始发送数据
         #2000;
         WR_Src = 1;
-#100; // 00
+#100; // 80
 
         rs232_rxd = 1'b0;  // 起始位
         #8680;  // 大约8680个时钟周期
@@ -57,7 +58,7 @@ module Top_tb;
         #8680;
         rs232_rxd = 1'b0;
         #8680;
-        rs232_rxd = 1'b0;
+        rs232_rxd = 1'b1;
         #8680;
         rs232_rxd = 1'b1;  // 停止位
         #8680;
@@ -203,6 +204,8 @@ module Top_tb;
         #8680;
         rs232_rxd = 1'b1;  // 停止位
         #8680;
+        
+        WR_Src = 0;
         
 #868000; // 23
 

@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2700185 Thu Oct 24 18:46:05 MDT 2019
-// Date        : Mon Sep  2 11:38:50 2024
+// Date        : Tue Sep  3 15:24:59 2024
 // Host        : LAPTOP-U0UTG14L running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top ReceiveUart -prefix
-//               ReceiveUart_ ReceiveUart_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               g:/computer/RISC-V-CPU/risc-v/risc-v.srcs/sources_1/ip/ReceiveUart/ReceiveUart_sim_netlist.v
 // Design      : ReceiveUart
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -53,6 +53,7 @@ module ReceiveUart
         .O_rx_done(O_rx_done));
 endmodule
 
+(* ORIG_REF_NAME = "baudrate_gen" *) 
 module ReceiveUart_baudrate_gen
    (\R_bps_rx_cnt_reg[12]_0 ,
     O_bps_rx_clk_en,
@@ -378,6 +379,7 @@ module ReceiveUart_baudrate_gen
         .Q(R_bps_rx_cnt[9]));
 endmodule
 
+(* ORIG_REF_NAME = "uart_rx" *) 
 module ReceiveUart_uart_rx
    (I_rst_n_0,
     O_bps_rx_clk_en,
@@ -967,6 +969,7 @@ module ReceiveUart_uart_rx
         .Q(R_rs232_rx_reg3));
 endmodule
 
+(* ORIG_REF_NAME = "uart_top" *) 
 module ReceiveUart_uart_top
    (I_clk,
     I_rst_n,

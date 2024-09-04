@@ -105,6 +105,7 @@ module tb_uart_top;
         rs232_rxd = 1'b1;  // 停止位
         #8680;
         #868000;
+        rx_start = 1'b0;
 
                 // 发送一个字节的数据 "A" (ASCII 65)
         rs232_rxd = 1'b0;  // 起始位

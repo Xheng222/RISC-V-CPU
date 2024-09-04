@@ -46,7 +46,7 @@
 // 
 // DO NOT MODIFY THIS FILE.
 
-// IP VLNV: xilinx.com:user:uart_top:4.0
+// IP VLNV: xilinx.com:user:uart_top:5.0
 // IP Revision: 1
 
 // The following must be inserted into your Verilog file for this

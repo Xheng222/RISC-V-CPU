@@ -4,10 +4,11 @@ module RISC_CPU(
     input rst,    
     input rx_done,
     input WR_Src,  // 1 - IRAM; 0 - DRAM
-    input [31:0] addr,
+    input [31:0] Addr,
     input [7:0] data,
     
-    output [7:0] show_num
+    output [15:0] show_num_1,
+    output [15:0] show_num_2
     );
     
     //  1 / 4 clk
@@ -53,19 +54,23 @@ module RISC_CPU(
         .pc(pc)
     );
     
-    wire IRAMWR;
+    wire IRAMWR_en;
     wire clk_rst;
+    wire [15:0] WR_data_IRAM;
     
-    assign IRAMWR = (!rst && WR_Src);
-    assign clk_rst = (rst) ? clk_slow : rx_done;
+    assign IRAMWR_en = (!rst && WR_Src);
+    assign clk_rst = (rst) ? clk : ~rx_done;
    
     IRAM iram(
         .clk(clk_rst),
-        .IRAMWR(IRAMWR),
-        .addr(addr),
+        .rst(rst),
+        .WR_en(IRAMWR_en),
+        .Addr(Addr),
         .instrWR(data),
         .pc(pc),
-        .instr(instr)
+        
+        .instr(instr),
+        .WR_data(WR_data_IRAM)
     );
      
     // IF_ID
@@ -308,35 +313,42 @@ module RISC_CPU(
     // MEM State //
     
     // DRAM
-    wire DRAMWR;
+    wire DRAMWR_en;
     wire clk_Dram;
     wire MemRD_rst;
     wire MemWR_rst;  
     wire [2:0] MemRWType_rst;  
     wire [31:0] DramAddr;
     wire [31:0] DataWR;
+    wire [15:0] WR_data_DRAM;
+    wire [31:0] MemData; 
     
-    assign DRAMWR = (!rst && !WR_Src);
-    assign clk_Dram = (DRAMWR) ? rx_done : clk;
-    assign MemRD_rst = (DRAMWR) ? 0 : MemRD_EX_MEM;
-    assign MemWR_rst = (DRAMWR) ? 1 : MemWR_EX_MEM;
-    assign MemRWType_rst = (DRAMWR) ? 3'b000 : MemRWType_EX_MEM;
-    assign  DramAddr = (DRAMWR) ? addr : EXData_EX_MEM;
-    assign  DataWR = (DRAMWR) ? data : rs2Data_EX_MEM;
+//    wire [15:0] show_num_1;
+//    wire [15:0] show_num_2;
+        
+    assign DRAMWR_en = (!rst && !WR_Src);
+    assign clk_Dram = (rst) ? clk : ~rx_done;
+    assign RD_en_rst = (DRAMWR_en) ? 0 : MemRD_EX_MEM;
+    assign WR_en_rst = (DRAMWR_en) ? 1 : MemWR_EX_MEM;
+    assign MemRWType_rst = (DRAMWR_en) ? 3'b111 : MemRWType_EX_MEM;
+    assign  DramAddr = (DRAMWR_en) ? Addr : EXData_EX_MEM;
+    assign  DataWR = (DRAMWR_en) ? {{24{1'b0}}, data} : rs2Data_EX_MEM;
     
-    wire [31:0] MemData;    
+   
     DRAM dram(
         .clk(clk_Dram),
-        .clk_slow(clk_rst),
-        .MemRD(MemRD_rst),
-        .MemWR(MemWR_rst),
-        .MemRWType(MemRWType_rst),
-        .ALUoutput(DramAddr),
-        .rd2(DataWR),
+        .RD_en(RD_en_rst),
+        .WR_en(WR_en_rst),
+        .RWType(MemRWType_rst),
+        .Addr(DramAddr),
+        .WR_data(DataWR),
         .MemData(MemData),
         
-        .show_num(show_num)
+        .show_num_1(show_num_1),
+        .show_num_2(WR_data_DRAM)
     );
+
+    assign show_num_2 = (IRAMWR_en) ? WR_data_IRAM : WR_data_DRAM;
     
     // WB select    
     wire [31:0] rdData;
